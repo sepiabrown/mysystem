@@ -63,6 +63,11 @@
 
 (package! swagger-to-org)
 
+(package! org-roam)
+
+;; (unpin! org-roam)
+(package! org-roam-ui)
+
 (package! string-inflection)
 
 (package! rg)

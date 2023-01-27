@@ -127,7 +127,7 @@
        elixir            ; erlang done right
        elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
-       ;;erlang            ; an elegant language for a more civilized age
+       erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;factor
        ;;faust             ; dsp, but you get to keep your soul
@@ -159,13 +159,13 @@
        (org              ; organize your plain life in plain text
         ;;+pretty        ; yessss my pretties! (nice unicode symbols)
         +dragndrop       ; drag & drop files/images into org buffers
-        ;;+hugo          ; use Emacs for hugo blogging
+        +hugo          ; use Emacs for hugo blogging
         ;;+noter         ; enhanced PDF notetaking
         +jupyter         ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         +gnuplot         ; who doesn't like pretty pictures
         +pomodoro        ; be fruitful with the tomato technique
-        ;;+present       ; using org-mode for presentations
+        +present       ; using org-mode for presentations
         +roam2)          ; wander around notes
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
@@ -176,7 +176,7 @@
         +tree-sitter
         +cython)
        ;;qt                ; the 'cutest' gui framework ever
-       ;;racket            ; a DSL for DSLs
+       racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace

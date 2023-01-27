@@ -217,6 +217,48 @@
 
 (use-package! swagger-to-org)
 
+(use-package! org-roam
+  :ensure t
+  :custom
+  ;; (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
+  (org-roam-directory (file-truename "~/Dropbox/RoamNotes/"))
+  (org-roam-completion-everywhere t)
+  :bind (("C-c n b" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ;;("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n a" . org-roam-alias-add)
+         ("C-c n u" . org-roam-ui-open)
+         ("C-c n g" . org-id-get-create)
+         ("C-c n t" . org-roam-tag-add)
+         :map org-mode-map
+         ("C-M-i"   . completion-at-point)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+
+  :config
+;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
+;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode))
+;;   ;; If using org-roam-protocol
+;;   (require 'org-roam-protocol))
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
 (setq-default indent-tabs-mode nil)

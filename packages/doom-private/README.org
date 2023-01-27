@@ -239,7 +239,7 @@ coq               ; proofs-as-programs
 elixir            ; erlang done right
 elm               ; care for a cup of TEA?
 emacs-lisp        ; drown in parentheses
-;;erlang            ; an elegant language for a more civilized age
+erlang            ; an elegant language for a more civilized age
 ;;ess               ; emacs speaks statistics
 ;;factor
 ;;faust             ; dsp, but you get to keep your soul
@@ -271,13 +271,13 @@ ocaml             ; an objective camel
 (org              ; organize your plain life in plain text
  ;;+pretty        ; yessss my pretties! (nice unicode symbols)
  +dragndrop       ; drag & drop files/images into org buffers
- ;;+hugo          ; use Emacs for hugo blogging
+ +hugo          ; use Emacs for hugo blogging
  ;;+noter         ; enhanced PDF notetaking
  +jupyter         ; ipython/jupyter support for babel
  +pandoc          ; export-with-pandoc support
  +gnuplot         ; who doesn't like pretty pictures
  +pomodoro        ; be fruitful with the tomato technique
- ;;+present       ; using org-mode for presentations
+ +present       ; using org-mode for presentations
  +roam2)          ; wander around notes
 ;;php               ; perl's insecure younger brother
 ;;plantuml          ; diagrams for confusing people more
@@ -288,7 +288,7 @@ purescript        ; javascript, but functional
  +tree-sitter
  +cython)
 ;;qt                ; the 'cutest' gui framework ever
-;;racket            ; a DSL for DSLs
+racket            ; a DSL for DSLs
 ;;raku              ; the artist formerly known as perl6
 ;;rest              ; Emacs as a REST client
 ;;rst               ; ReST in peace
@@ -785,6 +785,74 @@ causes conflict in syncing files between linux and mac.
 #+begin_src emacs-lisp
 
 (use-package! swagger-to-org)
+
+#+end_src
+
+*** Org Roam
+
+#+begin_src emacs-lisp :tangle packages.el
+
+(package! org-roam)
+
+#+end_src
+
+#+begin_src emacs-lisp
+
+(use-package! org-roam
+  :ensure t
+  :custom
+  ;; (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
+  (org-roam-directory (file-truename "~/Dropbox/RoamNotes/"))
+  (org-roam-completion-everywhere t)
+  :bind (("C-c n b" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ;;("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n a" . org-roam-alias-add)
+         ("C-c n u" . org-roam-ui-open)
+         ("C-c n g" . org-id-get-create)
+         ("C-c n t" . org-roam-tag-add)
+         :map org-mode-map
+         ("C-M-i"   . completion-at-point)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+
+  :config
+;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
+;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode))
+;;   ;; If using org-roam-protocol
+;;   (require 'org-roam-protocol))
+
+#+end_src
+
+*** Org Roam UI
+
+#+begin_src emacs-lisp :tangle packages.el
+
+;; (unpin! org-roam)
+(package! org-roam-ui)
+
+#+end_src
+
+#+begin_src emacs-lisp
+
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 #+end_src
 
