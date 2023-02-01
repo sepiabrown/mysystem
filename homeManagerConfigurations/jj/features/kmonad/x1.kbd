@@ -23,6 +23,16 @@
   sot  #(spc o t)
   sw   #(C-w C-w)
   st.  #(spc tab .)
+  st1  #(spc tab 1)
+  st2  #(spc tab 2)
+  st3  #(spc tab 3)
+  st4  #(spc tab 4)
+  st5  #(spc tab 5)
+  st6  #(spc tab 6)
+  st7  #(spc tab 7)
+  st8  #(spc tab 8)
+  st9  #(spc tab 9)
+  st0  #(spc tab 0)
 
   ;; layer switchers
   arr  (tap-hold-next-release 200 (layer-switch arrow) lalt)
@@ -59,7 +69,7 @@
 (deflayer arrow
         _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @s`   _    _    _    _    _    _    _    _    _    _    _    _    _
+  @s`   @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
   @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @s[  @s]  _
   _     _    @sfs _    _    _    left down up   rght _    _         _
   _     _    @xst @swc _    _    spc  _    _    _    _              _
