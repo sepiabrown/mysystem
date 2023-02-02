@@ -71,7 +71,7 @@
 
     nixosConfigurations = import ./nixosConfigurations inputs;
 
-    homeManagerConfigurations = import ./homeManagerConfigurations inputs;
+    homeConfigurations = import ./homeConfigurations inputs;
 
     deploy = import ./deploy inputs;
 
