@@ -15,13 +15,13 @@
 
   ;; for doom-emacs
   alx  (tap-hold-next-release 200 (around lalt x) ralt)
-  s[   #(spc [)
-  s]   #(spc ])
-  s`   #(spc `)
   sfs  #(spc f s)
   swc  #(spc w c)
   sot  #(spc o t)
   sw   #(C-w C-w)
+  st`  #(spc tab `)
+  st[  #(spc tab [)
+  st]  #(spc tab ])
   st.  #(spc tab .)
   st1  #(spc tab 1)
   st2  #(spc tab 2)
@@ -69,8 +69,8 @@
 (deflayer arrow
         _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @s`   @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
-  @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @s[  @s]  _
+  @st`  @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
+  @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @st[ @st]  _
   _     _    @sfs _    _    _    left down up   rght _    _         _
   _     _    @xst @swc _    _    spc  _    _    _    _              _
   _     _    _    _              _              @bas _    _    _    _    _
