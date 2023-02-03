@@ -3,7 +3,7 @@ let
 
   inherit (inputs.nixpkgs.legacyPackages."x86_64-linux") lib;
   inherit (inputs) deploy-rs;
-  inherit (inputs.self) nixosConfigurations homeManagerConfigurations;
+  inherit (inputs.self) nixosConfigurations homeConfigurations;
 
   activate-nixos = system: deploy-rs.lib.${system}.activate.nixos;
   activate-home = system: deploy-rs.lib.${system}.activate.home-manager;
@@ -13,7 +13,7 @@ let
     hostname = value;
     profiles."jj" = {
       user = "jj";
-      path = activate-home "x86_64-linux" homeManagerConfigurations."jj@server";
+      path = activate-home "x86_64-linux" homeConfigurations."jj@server";
     };
   }) {
     gateway = "10.10.0.1";
@@ -43,7 +43,7 @@ in
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.lima;
       profiles."jj" = {
         user = "jj";
-        path = activate-home "x86_64-linux" homeManagerConfigurations."jj@lima";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@lima";
       };
     };
 
@@ -52,7 +52,7 @@ in
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.urubamba;
       profiles."jj" = {
         user = "jj";
-        path = activate-home "x86_64-linux" homeManagerConfigurations."jj@urubamba";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@urubamba";
       };
     };
 
@@ -61,7 +61,7 @@ in
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.lapaz;
       profiles."jj" = {
         user = "jj";
-        path = activate-home "x86_64-linux" homeManagerConfigurations."jj@lapaz";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@lapaz";
       };
     };
 
@@ -70,7 +70,7 @@ in
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.bogota;
       profiles."jj" = {
         user = "jj";
-        path = activate-home "x86_64-linux" homeManagerConfigurations."jj@bogota";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@bogota";
       };
     };
 
@@ -79,7 +79,7 @@ in
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.antofagasta;
       profiles."jj" = {
         user = "jj";
-        path = activate-home "x86_64-linux" homeManagerConfigurations."jj@antofagasta";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@antofagasta";
       };
     };
 
@@ -88,7 +88,7 @@ in
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.giron;
       profiles."jj" = {
         user = "jj";
-        path = activate-home "x86_64-linux" homeManagerConfigurations."jj@server";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@server";
       };
     };
 
