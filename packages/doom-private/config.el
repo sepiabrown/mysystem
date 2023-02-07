@@ -65,6 +65,8 @@
   (lsp-ui-sideline-show-diagnostics nil)
   (lsp-modeline-diagnostics-enable nil)
   ;;(lsp-eldoc-enable-hover nil)
+  :config
+  (map! "C-,"       #'lsp-execute-code-action)
 )
 
 (use-package! lsp-ui
@@ -399,11 +401,7 @@
           :ni "<up>"   #'vterm-send-up
           :ni "C-r"    #'vterm-send-C-r
           :ni "C-t"    #'vterm-send-C-t
-          :ni "M-["    #'+workspace/switch-left
-          :ni "M-]"    #'+workspace/switch-right
-          :ni "M-`"    #'+workspace/other
-          :ni "M-,"    #'+workspace/switch-to
-          ))
+          )   )
 
 (use-package! vterm
   :config
@@ -445,8 +443,11 @@
   (defun get-current-workspace-name()
     (safe-persp-name (get-current-persp)))
 
-  (map! "M-["     #'+workspace/switch-left
+  (map! :map (global-map vterm-mode-map org-mode-map)
+        "M-["     #'+workspace/switch-left
         "M-]"     #'+workspace/switch-right
+        "M-{"     #'+workspace/swap-left
+        "M-}"     #'+workspace/swap-right
         "M-`"     #'+workspace/other
         "M-,"     #'+workspace/switch-to
         "M-TAB"   #'+workspace/switch-to
@@ -459,10 +460,8 @@
         :desc "previous-buffer" "[" #'previous-buffer
         :desc "next-buffer"     "]" #'next-buffer)
 
-  (map! :map org-mode-map
+  (map! :map (global-map org-mode-map)
         "C-j"  #'forward-paragraph
-        "C-K"  #'backward-paragraph)
-  (map! "C-j"  #'forward-paragraph
         "C-K"  #'backward-paragraph)
 
   (map! :map minibuffer-mode-map
@@ -470,4 +469,3 @@
         "M-k"  #'previous-history-element)
 
   (map! :leader "r" #'consult-ripgrep)
-  (map! "C-,"       #'lsp-execute-code-action)
