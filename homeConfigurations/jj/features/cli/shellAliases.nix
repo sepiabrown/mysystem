@@ -30,6 +30,8 @@
     nix-outpath = "nix-build --no-out-link '<nixpkgs>' -A";
     nix-position = "function __nix-position() { nix-instantiate '<nixpkgs>' --eval -A $1.meta.position; }; __nix-position";
     nix-build--no-out-link = "nix-build --no-out-link";
+    nix-build-callPackage = ''function __nix-build-callPackage() { nix-build -E "with import <nixpkgs> {}; callPackage ''$1 {}"; }; __nix-build-callPackage'';
+    nix-shell-callPackage = ''function __nix-shell-callPackage() { nix-shell -E "with import <nixpkgs> {}; callPackage ''$1 {}"; }; __nix-shell-callPackage'';
 
   };
 }
