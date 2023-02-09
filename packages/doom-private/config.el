@@ -20,9 +20,9 @@
 
 (setq doom-theme 'doom-one)
 
-(setq doom-font (font-spec :family "Mononoki Nerd Font Mono" :size 22)
-      doom-big-font (font-spec :family "Mononoki Nerd Font Mono" :size 36)
-      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font Mono" :size 22))
+(setq doom-font (font-spec :family "Mononoki Nerd Font" :size 22)
+      doom-big-font (font-spec :family "Mononoki Nerd Font" :size 36)
+      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font" :size 22))
 
 (setq display-line-numbers-type t)
 

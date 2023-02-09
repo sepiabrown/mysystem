@@ -33,7 +33,7 @@
       };
 
       cursor.style = "Beam";
-      colors = import ./theme/tomorrow-night;
+      colors = import ./theme/doom-one;
 
       # shell = {
       #   program = "${fish}/bin/fish";
