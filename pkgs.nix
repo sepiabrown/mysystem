@@ -11,7 +11,7 @@ import nixpkgs {
   inherit system;
   overlays = [
     deploy-rs.overlay
-    agenix.overlay
+    agenix.overlays.default
     (final: prve: {
       xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
       kmonad = inputs.kmonad.packages.${system}.kmonad;
