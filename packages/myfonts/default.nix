@@ -26,13 +26,4 @@ in {
   sunflower      = mkFont ./fonts/Sunflower;
   yeon-sung      = mkFont ./fonts/Yeon_Sung;
 
-  mynerdfonts = nerdfonts.override {
-    fonts = [
-      "Mononoki"
-      "SourceCodePro"
-      "FiraCode"
-      "Noto"
-    ];
-  };
-
 }
