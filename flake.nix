@@ -28,7 +28,6 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     myxmonad.url = "github:jjdosa/myxmonad";
 

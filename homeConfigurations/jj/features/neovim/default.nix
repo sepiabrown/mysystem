@@ -1,19 +1,17 @@
 { config, pkgs, inputs, ... }:
-let neovim-overlay = inputs.neovim-nightly-overlay.packages.${pkgs.system};
-in
 {
-  imports = [
-    # ./telescope.nix
-  ];
-
   programs.neovim = {
     enable = true;
-    package = neovim-overlay.neovim;
-
     plugins = with pkgs.vimPlugins; [
-
-      # Misc
       vim-surround
+      {
+        plugin = telescope-nvim;
+        type = "lua";
+        config = /* lua */ ''
+          local telescopebuiltin = require('telescope.builtin')
+          vim.keymap.set('n', '<leader>F', telescopebuiltin.find_files, {})
+        '';
+      }
     ];
   };
 
