@@ -1,7 +1,7 @@
 inputs: system:
 let
 
-  inherit (inputs.self) nixosConfigurations;
+  inherit (inputs.self) nixosConfigurations homeConfigurations;
 
   pkgs = import ../pkgs.nix { inherit inputs system; };
   mylib = import ../lib pkgs;
@@ -28,11 +28,12 @@ let
   myfonts = callPackage ./myfonts {};
   myscripts = callPackage ./myscripts {};
   doom-private = callPackage ./doom-private {};
+  doom-emacs = homeConfigurations."jj@lapaz".config.programs.doom-emacs.package;
 
 in nixosSystems
 // myfonts
 // myscripts
 //
 {
-  inherit tmux tex doom-private;
+  inherit tmux tex doom-private doom-emacs;
 }
