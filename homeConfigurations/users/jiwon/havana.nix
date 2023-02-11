@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    ./user-info.nix
+    ./user-specific.nix
     ../../kinds/laptop.nix
   ];
 }

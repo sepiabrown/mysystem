@@ -56,13 +56,13 @@
   @tab  q    w    e    r    t    y    u    i    o    p    [    ]    bspc
   @lctl a    s    d    f    g    h    j    k    l    ;    '         ret
   lsft  z    x    c    v    b    n    m    ,    .    /    rsft
-        lalt lmet           @spc                @arr @alx
+        lalt lmet           @spc                rmet ralt
   )
 
 (deflayer arrow
   @st`  @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
   @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @st[ @st] _
-  _     _    @sfs _    _    _    lft  down up   rght _    _         _
-  _     _    @xst @swc _    _    spc  _    _    _    _    _
-        -    _              _                   @bas _
+  _     _    @sfs _    _    _    lft  down up   rght @alx _         _
+  _     _    @alx @swc _    _    spc  _    _    _    _    _
+        -    @xst           _                   _    _
   )

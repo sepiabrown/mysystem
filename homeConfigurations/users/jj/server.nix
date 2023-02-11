@@ -1,6 +1,6 @@
 {
   imports = [
-    ./user-info.nix
+    ./user-specific.nix
     ../../kinds/server.nix
   ];
 }

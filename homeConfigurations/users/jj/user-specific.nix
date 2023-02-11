@@ -1,6 +1,9 @@
 { config, lib, pkgs, userInfo, ... }:
 
 {
+  imports = [
+    ../../features/inputMethod/sebeolsik.nix
+  ];
 
   userInfo.name = "JJ Kim";
   userInfo.email = "jj@haedosa.xyz";

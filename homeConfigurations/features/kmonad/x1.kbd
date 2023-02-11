@@ -62,7 +62,7 @@
   @tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @lctl a    s    d    f    g    h    j    k    l    ;    '         ret
   lsft  z    x    c    v    b    n    m    ,    .    /              rsft
-  wkup  lctl lalt lmet           @spc           @arr @alx rctl pgdn up   pgup
+  wkup  lctl lalt lmet           @spc           ralt sys rctl  pgdn up   pgup
                                                                left down rght
 )
 
@@ -70,9 +70,9 @@
         _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   @st`  @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
-  @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @st[ @st]  _
-  _     _    @sfs _    _    _    left down up   rght _    _         _
-  _     _    @xst @swc _    _    spc  _    _    _    _              _
-  _     _    _    _              _              @bas _    _    _    _    _
+  @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @st[ @st] _
+  _     _    @sfs _    _    _    left down up   rght @alx _         _
+  _     _    @alx @swc _    _    spc  _    _    _    _              _
+  _     _    _    @xst           _              _    _    _    _    _    _
                                                                _    _    _
 )

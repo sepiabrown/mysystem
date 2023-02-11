@@ -2,6 +2,10 @@
 
 {
 
+  imports = [
+    ../../features/inputMethod/dubeolsik.nix
+  ];
+
   userInfo.name = "Jiwon Lee";
   userInfo.email = "leejiwon8433@gmail.com";
 
