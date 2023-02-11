@@ -219,11 +219,16 @@
 
 (use-package! swagger-to-org)
 
+(defun my/org-roam-directory ()
+  (let ((org-roam-directory (expand-file-name "Dropbox/roam" (getenv "HOME"))))
+    (unless (file-exists-p org-roam-directory)
+      (make-directory org-roam-directory t))
+    org-roam-directory))
+
 (use-package! org-roam
   :ensure t
   :custom
-  ;; (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
-  (org-roam-directory (file-truename "~/Dropbox/RoamNotes/"))
+  (org-roam-directory (my/org-roam-directory))
   (org-roam-completion-everywhere t)
   :bind (("C-c n b" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -234,17 +239,15 @@
          ("C-c n g" . org-id-get-create)
          ("C-c n t" . org-roam-tag-add)
          :map org-mode-map
-         ("C-M-i"   . completion-at-point)
          ("C-c n c" . org-roam-capture)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
-
   :config
-;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
-;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (org-roam-db-autosync-mode))
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+    (org-roam-db-autosync-mode)
 ;;   ;; If using org-roam-protocol
-;;   (require 'org-roam-protocol))
+   (require 'org-roam-protocol))
 
 (use-package! websocket
     :after org-roam)
