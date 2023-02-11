@@ -51,4 +51,9 @@ in
     inherit specialArgs;
     modules = [ ./hosts/usb ];
   };
+
+  havana = nixosSystem {
+    inherit specialArgs;
+    modules = [ ./hosts/havana ];
+  };
 }

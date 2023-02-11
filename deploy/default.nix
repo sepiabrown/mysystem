@@ -92,6 +92,19 @@ in
       };
     };
 
+    havana = {
+      hostname = "192.168.50.110";
+      profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.havana;
+      profiles."jj" = {
+        user = "jj";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@server";
+      };
+      profiles."jiwon" = {
+        user = "jiwon";
+        path = activate-home "x86_64-linux" homeConfigurations."jiwon@havana";
+      };
+    };
+
   }
   //
   server-nodes
