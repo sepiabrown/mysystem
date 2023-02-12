@@ -28,6 +28,7 @@ in
     xorg.xrandr            # display manager (X Resize and Rotate protocol)
     xorg.xev
     arandr
+    autorandr
     xdotool
 
     acpilight              # xbacklight drop-in replacement; adjust display brightness
