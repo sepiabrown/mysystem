@@ -54,6 +54,10 @@ in
         user = "jj";
         path = activate-home "x86_64-linux" homeConfigurations."jj@urubamba";
       };
+      profiles."suwonp" = {
+        user = "suwonp";
+        path = activate-home "x86_64-linux" homeConfigurations."suwonp@urubamba";
+      };
     };
 
     lapaz = {

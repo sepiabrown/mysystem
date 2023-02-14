@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../features/inputMethod/sebeolsik.nix
+    ../../features/inputMethod/sebeolsik-391.nix
   ];
 
   userInfo.name = "JJ Kim";

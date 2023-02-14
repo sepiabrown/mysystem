@@ -48,4 +48,10 @@ in
     extraSpecialArgs = { inherit inputs; };
     modules = [ ./users/jiwon/havana.nix ];
   };
+
+  "suwonp@urubamba" = homeManagerConfiguration {
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    extraSpecialArgs = { inherit inputs; };
+    modules = [ ./users/suwonp/urubamba.nix ];
+  };
 }

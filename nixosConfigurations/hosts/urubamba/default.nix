@@ -41,6 +41,7 @@ in
 
     # host agnostic standard configurations
     ../../users
+    ../../users/suwonp.nix
     ../../standard/configuration.nix
 
     # wireguard networks
@@ -50,8 +51,8 @@ in
     # features
     ../../features/xserver.nix
     ../../features/avahi.nix
-    ../../features/dropbox.nix
-    ../../features/syncthing.nix
+    # ../../features/dropbox.nix
+    # ../../features/syncthing.nix
     ../../features/substituters/hds0.nix
     ../../features/remote-build.nix
     ../../features/peerix.nix
