@@ -22,7 +22,13 @@
 
       Ocean = {
         path = "/home/jj/Ocean";
-        devices = [ "lapaz" "lima" "bogota" "urubamba" "antofagasta" ];
+        devices = [
+          "lapaz"
+          "lima"
+          "bogota"
+          # "urubamba"
+          "antofagasta"
+        ];
         versioning = {
           type = "staggered";
           params = {
