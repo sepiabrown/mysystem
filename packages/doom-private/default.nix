@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   name = "doom-private";
-  src = lib.sourceByRegex ./. [ "README.org" ];
+  src = lib.sourceByRegex ./. [ "doom-private.org" ];
 
   buildInputs = [ emacs coreutils ];
   buildPhase = ''
@@ -10,7 +10,7 @@ stdenv.mkDerivation {
     # Tangle org files
     emacs --batch -Q \
       -l org \
-      README.org \
+      doom-private.org \
       -f org-babel-tangle
   '';
 
