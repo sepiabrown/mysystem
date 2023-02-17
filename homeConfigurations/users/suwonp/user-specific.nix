@@ -4,6 +4,8 @@
 
   imports = [
     ../../features/inputMethod/sebeolsik-390.nix
+    ./dotfiles/homemanager_basic.nix
+    ./dotfiles/homemanager_optional.nix
   ];
 
   userInfo.name = "Suwon Park";
