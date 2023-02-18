@@ -55,5 +55,5 @@ in
     ../features/tightvnc.nix
   ];
 
-  colorscheme = lib.mkDefault colorSchemes.dracula;
+  colorScheme = lib.mkDefault colorSchemes.dracula;
 }

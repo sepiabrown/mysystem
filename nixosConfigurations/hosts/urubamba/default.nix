@@ -31,13 +31,15 @@ in
     # ../../features/intel-12gen-igpu.nix
 
     # bootloader
-    ./bootloader.nix
+    #./bootloader.nix
+    ./hardware-configuration.nix
+    ./zfs.nix
 
     # kernel
-    ./kernel.nix
+    #./kernel.nix
 
     # file systems
-    ../../fileSystems/ext4.nix
+    #../../fileSystems/ext4.nix
 
     # host agnostic standard configurations
     ../../users
