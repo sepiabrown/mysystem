@@ -96,6 +96,16 @@ in
       };
     };
 
+    atacama = {
+      hostname = "10.10.0.26";
+      profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.atacama;
+      profiles."jj" = {
+        user = "jj";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@atacama";
+      };
+    };
+
+
     havana = {
       hostname = "192.168.50.110";
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.havana;

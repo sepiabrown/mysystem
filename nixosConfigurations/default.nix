@@ -20,6 +20,7 @@ let
        "garganta"
        "usb"
        "havana"
+       "atacama"
      ]);
 
 in nixosSystems

@@ -28,59 +28,10 @@ let
        "jj@lapaz"
        "jj@bogota"
        "jj@antofagasta"
+       "jj@atacama"
        "jj@server"
        "jiwon@havana"
        "suwonp@urubamba"
      ]);
 
 in homeManagerConfigurations
-# {
-
-#   "jj@lima" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jj/lima.nix ];
-#   };
-
-#   "jj@urubamba" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jj/urubamba.nix ];
-#   };
-
-#   "jj@lapaz" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jj/lapaz.nix ];
-#   };
-
-#   "jj@bogota" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jj/bogota.nix ];
-#   };
-
-#   "jj@antofagasta" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jj/antofagasta.nix ];
-#   };
-
-#   "jj@server" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jj/server.nix ];
-#   };
-
-#   "jiwon@havana" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/jiwon/havana.nix ];
-#   };
-
-#   "suwonp@urubamba" = homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages."x86_64-linux";
-#     extraSpecialArgs = { inherit inputs; };
-#     modules = [ ./users/suwonp/urubamba.nix ];
-#   };
-# }
