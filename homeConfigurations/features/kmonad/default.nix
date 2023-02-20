@@ -20,6 +20,10 @@ let
       kdbFile = ./legion.kbd;
       device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
     };
+    x1_dvorak = {
+      kdbFile = ./x1_dvorak.kbd;
+      device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+    };
   };
 
   kmonadScripts = lib.mapAttrs' (name: value: {
@@ -43,6 +47,9 @@ in {
 
   xsession.enable = true;
   xsession.initExtra = ''
+    kmonad-hhkb-usb &
+    kmonad-hhkb-blt &
+    kmonad-x1_dvorak &
     myxset
   '';
   # xsession.initExtra = ''

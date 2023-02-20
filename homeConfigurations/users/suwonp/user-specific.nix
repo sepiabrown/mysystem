@@ -12,7 +12,6 @@
   userInfo.email = "sepiabrown@naver.com";
 
   home.packages = with pkgs; [
-    vimHugeX
     firefox
   ];
 

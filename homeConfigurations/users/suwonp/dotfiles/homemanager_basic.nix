@@ -448,7 +448,7 @@
               oauth_token: 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
               git_protocol: ssh
         '';
-        ".config/nix/nix.conf".text = builtins.readFile ./nix.conf;
+        #".config/nix/nix.conf".text = builtins.readFile ./nix.conf;
         ".kaggle/kaggle.json".text = ''
           {"username":"suwonpark","key":"ffd3b06e5b9b6b853dc64b736a430f73"}
         '';
