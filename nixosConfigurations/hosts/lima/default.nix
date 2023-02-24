@@ -60,6 +60,7 @@ in
     ../../features/remote-build.nix
     ../../features/quietboot
     ../../features/peerix.nix
+    ../../features/gitea.nix
 
   ];
 

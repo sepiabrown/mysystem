@@ -45,4 +45,6 @@ in
   # peerix key, pubkey = peerix:5In6cUHRQgQUhvnlefNBd/0e7g1TMhmck15UsJv9hxY=
   "peerix.age".publicKeys = [jj] ++ systems;
 
+  "gitea-dbpass.age".publicKeys = [ jj ] ++ systems;
+
 }
