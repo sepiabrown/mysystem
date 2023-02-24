@@ -45,6 +45,7 @@ in
     slack
     kotatogram-desktop
     solaar                # Linux device manager for the Logitech Unifying Receiver
+    scrot                 # cli screen saver
 
     sweethome3d.application
   ] ++
