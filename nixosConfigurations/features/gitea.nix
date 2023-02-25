@@ -21,7 +21,7 @@ in
       type = "postgres";
       passwordFile = config.age.secrets.gitea-dbpass.path;
     };
-    domain = "git.jjdosa.xyz";
+    domain = "10.10.0.21";
     inherit rootUrl httpPort;
   };
 
