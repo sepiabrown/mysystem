@@ -47,4 +47,6 @@ in
 
   "gitea-dbpass.age".publicKeys = [ jj ] ++ systems;
 
+  "github-token.age".publicKeys = [ jj ] ++ systems;
+
 }

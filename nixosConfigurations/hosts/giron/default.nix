@@ -56,6 +56,7 @@ in
     ../../features/substituters/hds0.nix
     ../../features/remote-build.nix
     ../../features/peerix.nix
+    ../../features/frpc.nix
 
     # nix binary cache
     nix-serve
