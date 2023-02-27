@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 let
 
-
+  remotePort = 30001;
   hds0-address = __head (lib.splitString "/" (__head config.networking.wireguard.interfaces.hds0.ips));
   httpPort = 3001;
-  rootUrl = "http://${hds0-address}/git/";
+  rootUrl = "http://${hds0-address}:${toString remotePort}"; # CAUTION: no tailing / required
 
 in
 {
@@ -21,7 +21,7 @@ in
       type = "postgres";
       passwordFile = config.age.secrets.gitea-dbpass.path;
     };
-    domain = "10.10.0.21";
+    domain = hds0-address;
     inherit rootUrl httpPort;
   };
 
@@ -30,7 +30,8 @@ in
     enable = true;
     recommendedProxySettings = true;
     virtualHosts."_" = {
-      locations."/git/" = {
+      listen = [ { port = remotePort; addr = "0.0.0.0"; ssl = false; } ];
+      locations."/" = {
         proxyPass = "http://localhost:${toString httpPort}/";
       };
     };
@@ -44,5 +45,7 @@ in
       gitea-users gitea gitea
     '';
   };
+
+  networking.firewall.allowedTCPPorts = [ remotePort ];
 
 }
