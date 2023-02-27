@@ -61,6 +61,7 @@ in
     ../../features/quietboot
     ../../features/peerix.nix
     ../../features/gitea.nix
+    ../../features/frpc.nix
 
   ];
 

@@ -54,7 +54,7 @@ in
       type = types.port;
       default = 6000;
       description = lib.mdDoc ''
-        Port number to expose HTTP(S).
+        Port number to expose SSH.
       '';
     };
 
@@ -65,6 +65,15 @@ in
         Custom domain name
       '';
     };
+
+    remoteHTTPPort = mkOption {
+      type = types.port;
+      default = 6001;
+      description = lib.mdDoc ''
+        Port number to expose HTTP.
+      '';
+    };
+
 
   };
 
@@ -91,7 +100,7 @@ in
 
     };
 
-    networking.firewall.allowedTCPPorts = [ cfg.bindPort cfg.remoteSSHPort 22 80 ];
+    networking.firewall.allowedTCPPorts = [ cfg.bindPort 22 80 ];
     networking.firewall.allowedUDPPorts = [ cfg.bindPort ];
 
   };
