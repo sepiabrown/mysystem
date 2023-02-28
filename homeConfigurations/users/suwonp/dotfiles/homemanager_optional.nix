@@ -36,7 +36,7 @@
             libreoffice
             okular # kde
             #vscode-with-extensions
-            foxitreader
+            #foxitreader
             xclip
             xsel
 
