@@ -49,4 +49,6 @@ in
 
   "github-token.age".publicKeys = [ jj ] ++ systems;
 
+  "drone.age".publicKeys = [ jj ] ++ systems;
+
 }
