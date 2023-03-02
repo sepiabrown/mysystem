@@ -1,17 +1,25 @@
 
 (defcfg
-  input  (device-file "@device@")
-  output (uinput-sink "@name@")
+  input  (device-file
+    "@device@")
+    ;;"/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+
+  output (uinput-sink
+    "@name@"
+    ;;"x1_dvorak"
+    "/run/current-system/sw/bin/sleep 5 && /run/current-system/sw/bin/setxkbmap -option korean:ralt_hangul,korean:rctrl_hanja")
+
   fallthrough true
   allow-cmd true
 )
 
 ;; Layers
 (defalias
-  ;;qwe (layer-switch qwerty)
-  dvk (layer-switch programmer-dvorak)
+  qwe (around (layer-switch qwerty) ralt)
+  dvk (around (layer-switch programmer-dvorak) ralt)
   lsl (around (layer-toggle programmer-dvorak-left-shift) lsft)
   rsl (around (layer-toggle programmer-dvorak-right-shift) rsft)
+  tpt (tap-macro i K M o n a d esc)
 )
 
 ;; Modifier keys
@@ -88,7 +96,7 @@
 
 ;; fn key and lctl key swapped!!
 (defsrc
-       mute vold volu
+       mute vold volu prev pp   next brdn brup      KeyWlan prnt KeyMedia
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -114,83 +122,93 @@
 ;;https://github.com/kmonad/kmonad/issues/111#issuecomment-1003652650
 
 (deflayer programmer-dvorak
-        _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  $     &    [    {    }    \(   =    *    \)   +    ]    !    #    _
-  tab   ;    ,    .    p    y    f    g    c    r    l    /    @    _
-  caps  a    o    e    u    i    d    h    t    n    s    -         _
-  @lsl  '    q    j    k    x    b    m    w    v    z              rsft
-  @lcl  wkup @lal @lml           spc            ralt sys  rctl _    _    _
-                                                               _    _    _
+       _    _    _    _    _    _    _    _         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  $    &    [    {    }    \(   =    *    \)   +    ]    !    #    _
+  tab  ;    ,    .    p    y    f    g    c    r    l    /    @    _
+  caps a    o    e    u    i    d    h    t    n    s    -         _
+  @lsl '    q    j    k    x    b    m    w    v    z              rsft
+  @lcl wkup @tpt @lml           spc            @qwe sys  rctl _    _    _
+                                                              _    _    _
 )
 
 #|
 (deflayer programmer-dvorak
-        _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  $     &    [    {    }    \(   =    *    \)   +    ]    !    #    _
-  tab   ;    ,    .    p    y    f    g    c    r    l    /    @    _
-  caps  a    o    e    u    i    d    h    t    n    s    -         _
-  @lsl  '    q    j    k    x    b    m    w    v    z              rsft
-  @lcl  wkup @lal @lml           spc            ralt sys  rctl _    _    _
-                                                               _    _    _
+       _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  $    &    [    {    }    \(   =    *    \)   +    ]    !    #    _
+  tab  ;    ,    .    p    y    f    g    c    r    l    /    @    _
+  caps a    o    e    u    i    d    h    t    n    s    -         _
+  @lsl '    q    j    k    x    b    m    w    v    z              rsft
+  @lcl wkup @lal @lml           spc            @qwe sys  rctl _    _    _
+                                                              _    _    _
 )
 |#
 
 (deflayer programmer-dvorak-left-shift
-        _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  ~     %    @ls7 @ls5 @ls3 @ls1 @ls9 @ls0 @ls2 @ls4 @ls6 @ls8 @ls` _
-  _     :    <    >    P    Y    F    G    C    R    L    ?    ^    |
-  _     A    O    E    U    I    D    H    T    N    S    \_        _
-  _     "    Q    J    K    X    B    M    W    V    Z              _ 
-  _     _    _    _              _              _    _    _    _    _    _
-                                                               _    _    _      
+       _    _    _    _    _    _    _    _         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  ~    %    @ls7 @ls5 @ls3 @ls1 @ls9 @ls0 @ls2 @ls4 @ls6 @ls8 @ls` _
+  _    :    <    >    P    Y    F    G    C    R    L    ?    ^    |
+  _    A    O    E    U    I    D    H    T    N    S    \_        _
+  _    "    Q    J    K    X    B    M    W    V    Z              _ 
+  _    _    _    _              _              _    _    _    _    _    _
+                                                              _    _    _      
 )
 
 (deflayer programmer-dvorak-right-shift
-        _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  ~     %    @rs7 @rs5 @rs3 @rs1 @rs9 @rs0 @rs2 @rs4 @rs6 @rs8 @rs` _
-  _     :    <    >    P    Y    F    G    C    R    L    ?    ^    |
-  _     A    O    E    U    I    D    H    T    N    S    \_        _
-  _     "    Q    J    K    X    B    M    W    V    Z              _ 
-  _     _    _    _              _              _    _    _    _    _    _
-                                                               _    _    _      
+       _    _    _    _    _    _    _    _         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  ~    %    @rs7 @rs5 @rs3 @rs1 @rs9 @rs0 @rs2 @rs4 @rs6 @rs8 @rs` _
+  _    :    <    >    P    Y    F    G    C    R    L    ?    ^    |
+  _    A    O    E    U    I    D    H    T    N    S    \_        _
+  _    "    Q    J    K    X    B    M    W    V    Z              _ 
+  _    _    _    _              _              _    _    _    _    _    _
+                                                              _    _    _      
 )
 
 (deflayer qwerty
-        _    _    _
+        _    _    _    _    _    _    _    _         _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _ 
-                                                               _    _    _
-)
-
-#|
-(deflayer qwerty
-        mute vold volu
-  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  del
   grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @lctl a    s    d    f    g    h    j    k    l    ;    '         ret
   lsft  z    x    c    v    b    n    m    ,    .    /              rsft
-  lctl  wkup lalt lmet           @spc           ralt sys rctl  pgdn up   pgup
-                                                               left down rght
+  lctl  wkup lalt lmet           @spc           @dvk  sys rctl  pgdn up   pgup
+                                                                left down rght
+)
+
+#|
+(deflayer qwerty
+        _    _    _    _    _    _    _    _         _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  @tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @lctl a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft  z    x    c    v    b    n    m    ,    .    /              rsft
+  lctl  wkup lalt lmet           @spc           @dvk  sys rctl  pgdn up   pgup
+                                                                left down rght
+)
+
+(deflayer qwerty
+       _    _    _    _    _    _    _    _         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    _    _    _    _              _
+  _    _    _    _              _              _    _    _    _    _    _
+                                                              _    _    _
 )
 |#
 
 (deflayer arrow
-        _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @st`  @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
-  @st.  _    @sw  _    _    @sot home pgdn pgup end  _    @st[ @st] _
-  _     _    @sfs _    _    _    left down up   rght @alx _         _
-  _     _    @alx @swc _    _    spc  _    _    _    _              _
-  _     _    _    @xst           _              _    _    _    _    _    _
-                                                               _    _    _
+       _    _    _    _    _    _    _    _         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @st` @st1 @st2 @st3 @st4 @st5 @st6 @st7 @st8 @st9 @st0 _    _    _
+  @st. _    @sw  _    _    @sot home pgdn pgup end  _    @st[ @st] _
+  _    _    @sfs _    _    _    left down up   rght @alx _         _
+  _    _    @alx @swc _    _    spc  _    _    _    _              _
+  _    _    _    @xst           _              _    _    _    _    _    _
+                                                              _    _    _
 )
