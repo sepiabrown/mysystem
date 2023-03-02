@@ -23,10 +23,11 @@ in
     };
     domain = hds0-address;
     inherit rootUrl httpPort;
-    extraConfig = ''
-      [webhook]
-      ALLOWED_HOST_LIST = *
-    '';
+    settings = {
+      webhook = {
+        ALLOWED_HOST_LIST = "*";
+      };
+    };
   };
 
 
