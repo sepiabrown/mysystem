@@ -32,6 +32,7 @@
     nix-build--no-out-link = "nix-build --no-out-link";
     nix-build-callPackage = ''function __nix-build-callPackage() { nix-build -E "with import <nixpkgs> {}; callPackage ''$1 {}"; }; __nix-build-callPackage'';
     nix-shell-callPackage = ''function __nix-shell-callPackage() { nix-shell -E "with import <nixpkgs> {}; callPackage ''$1 {}"; }; __nix-shell-callPackage'';
+    nixos-generations = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
 
   };
 }
