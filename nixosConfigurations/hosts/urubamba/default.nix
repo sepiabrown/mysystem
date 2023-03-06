@@ -36,7 +36,7 @@ in
     ./zfs.nix
 
     # kernel
-    #./kernel.nix
+    ./kernel.nix
 
     # file systems
     #../../fileSystems/ext4.nix
@@ -47,16 +47,16 @@ in
     ../../standard/configuration.nix
 
     # wireguard networks
-    hds0-wireguard
-    hds1-wireguard
+    #hds0-wireguard
+    #hds1-wireguard
 
     # features
     ../../features/xserver.nix
     ../../features/avahi.nix
     # ../../features/dropbox.nix
     # ../../features/syncthing.nix
-    ../../features/substituters/hds0.nix
-    ../../features/remote-build.nix
+    #../../features/substituters/hds0.nix
+    #../../features/remote-build.nix
     ../../features/peerix.nix
     ../../features/virtualization.nix
 

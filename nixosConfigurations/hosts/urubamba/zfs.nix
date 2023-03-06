@@ -3,7 +3,8 @@
 
 {
   networking.hostId = "9d3d7939";
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = pkgs.lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages;
+  #boot.kernelPackages = pkgs.lib.mkForce pkgs.linuxPackages_zen;
   boot.initrd.supportedFilesystems = [ "zfs" ];
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.efi.canTouchEfiVariables = false;
