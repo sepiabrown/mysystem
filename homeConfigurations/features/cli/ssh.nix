@@ -1,3 +1,24 @@
+let
+
+  builders = __listToAttrs (map (n: {
+    name = "b${toString n}";
+    value = {
+      hostname = "10.10.100.${toString n}";
+    };
+  } ) [ 1 2 3 4 5 ]);
+
+
+  hpc-nodes = __listToAttrs (map (n: {
+    name = "n${toString n}";
+    value = {
+      port = 2220 + n;
+      user = "hds";
+      hostname = "20.20.100.1";
+    };
+  }) [ 1 2 3 4 5 ]);
+
+
+in
 {
 
   programs.ssh = {
@@ -7,7 +28,7 @@
 
       "gateway" = {
         forwardX11 = true;
-        hostname = "121.136.244.64";
+        hostname = "10.10.0.1";
         user = "jj";
       };
 
@@ -62,36 +83,6 @@
         identityFile = "~/.ssh/id_wavetojj";
       };
 
-      "b1" = {
-        forwardX11 = true;
-        hostname = "10.10.100.1";
-      };
-
-      "b2" = {
-        forwardX11 = true;
-        hostname = "10.10.100.2";
-      };
-
-      "b3" = {
-        forwardX11 = true;
-        hostname = "10.10.100.3";
-      };
-
-      "b4" = {
-        forwardX11 = true;
-        hostname = "10.10.100.4";
-      };
-
-      "b5" = {
-        forwardX11 = true;
-        hostname = "10.10.100.5";
-      };
-
-      "b6" = {
-        forwardX11 = true;
-        hostname = "10.10.100.6";
-      };
-
       "hproxy" = {
         forwardX11 = true;
         hostname = "20.20.100.1";
@@ -102,11 +93,9 @@
         hostname = "20.20.100.2";
       };
 
-      "h6" = {
-        forwardX11 = true;
-        hostname = "20.20.100.6";
-      };
-    };
+    }
+    // builders
+    // hpc-nodes;
 
   };
 
