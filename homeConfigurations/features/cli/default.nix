@@ -58,7 +58,11 @@ in
     bandwhich         # display current network utilization
     magic-wormhole    # Securely and simply transfer data between computers
     sshfs             # mount ssh server
+    jless             # json viewer
+    jc
     nixos-shell
+    dig
+    dasel
   ] ++
   (with mypackages; [
     tmux
