@@ -1,14 +1,26 @@
 {
   home.shellAliases = {
-    ls   = "exa";
-    du   = "ncdu --color dark";
-    la   = "ls -a";
-    ll   = "ls -l";
-    lla  = "ls -al";
-    ec   = "emacsclient";
-    ecc  = "emacsclient -c";
-    ping = "prettyping";
-    ".." = "cd ..";
+    # ls   = "exa";
+    du       = "ncdu --color dark";
+    ls       = "ls --color=auto";
+    "l."     = "ls -d .*";
+    la       = "ls -a";
+    ll       = "ls -l";
+    lla      = "ls -al";
+    ec       = "emacsclient";
+    ecc      = "emacsclient -c";
+    ping     = "prettyping";
+    ".."      = "cd ..";
+    "..."     = "cd ../..";
+    "...."    = "cd ../../..";
+    "....."   = "cd ../../../..";
+    "......"  = "cd ../../../../..";
+    "......." = "cd ../../../../../..";
+    ".2"      = "cd ../..";
+    ".3"      = "cd ../../..";
+    ".4"      = "cd ../../../..";
+    ".5"      = "cd ../../../../..";
+    ".6"      = "cd ../../../../../..";
     p = "pushd";
     d = "dirs -v";
     o = "xdg-open";
