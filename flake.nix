@@ -22,7 +22,7 @@
     };
 
     nix-doom-emacs = {
-      url = "github:jjdosa/nix-doom-emacs";
+      url = "github:sepiabrown/nix-doom-emacs/adding_jjdosa_nix_community";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
