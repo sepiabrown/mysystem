@@ -19,7 +19,8 @@ in
     ../features/nix.nix
 
     # dependent type language
-    ../features/agda.nix
+    ../features/programming/agda.nix
+    ../features/programming/scheme.nix
 
     # personal note live server
     ../features/emanote.nix
