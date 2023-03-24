@@ -1210,7 +1210,7 @@ https://gist.github.com/ram535/a2153fb86f33ecec587d593c1c5e1623
   (defun get-current-workspace-name()
     (safe-persp-name (get-current-persp)))
 
-  (map! :map (global-map vterm-mode-map org-mode-map)
+  (map! :map (global-map vterm-mode-map dired-mode-map org-mode-map)
         "M-["     #'+workspace/switch-left
         "M-]"     #'+workspace/switch-right
         "M-{"     #'+workspace/swap-left
@@ -1219,6 +1219,12 @@ https://gist.github.com/ram535/a2153fb86f33ecec587d593c1c5e1623
         "M-,"     #'+workspace/switch-to
         "M-TAB"   #'+workspace/switch-to
         "M-<tab>" #'+workspace/switch-to)
+
+
+  (map! :leader
+        (:prefix-map ("TAB" . "workspace")
+        :desc "swap to left" "{" #'+workspace/swap-left
+        :desc "swap to right" "}" #'+workspace/swap-right))
 
 #+end_src
 

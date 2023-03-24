@@ -446,7 +446,7 @@
   (defun get-current-workspace-name()
     (safe-persp-name (get-current-persp)))
 
-  (map! :map (global-map vterm-mode-map org-mode-map)
+  (map! :map (global-map vterm-mode-map dired-mode-map org-mode-map)
         "M-["     #'+workspace/switch-left
         "M-]"     #'+workspace/switch-right
         "M-{"     #'+workspace/swap-left
@@ -455,6 +455,12 @@
         "M-,"     #'+workspace/switch-to
         "M-TAB"   #'+workspace/switch-to
         "M-<tab>" #'+workspace/switch-to)
+
+
+  (map! :leader
+        (:prefix-map ("TAB" . "workspace")
+        :desc "swap to left" "{" #'+workspace/swap-left
+        :desc "swap to right" "}" #'+workspace/swap-right))
 
   (map! "C-{"      #'previous-buffer
         "C-}"      #'next-buffer)
