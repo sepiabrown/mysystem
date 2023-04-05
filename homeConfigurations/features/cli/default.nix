@@ -58,6 +58,7 @@ in
     bandwhich         # display current network utilization
     magic-wormhole    # Securely and simply transfer data between computers
     sshfs             # mount ssh server
+    acpi              # battery check
     jless             # json viewer
     jc
     nixos-shell
