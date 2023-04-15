@@ -1,4 +1,4 @@
-# Install nix 
+# Install nix
 # - needs user account with sudo privilege
 # - needs to add 'experimental-features = nix-command flakes' to nix.conf (generally found in ~/.config/nix)
 #   - with nix-unstable-installer: https://github.com/numtide/nix-unstable-installer (recommended)
@@ -44,13 +44,13 @@
 #     $ setfacl -bnR .nix
 #     $ nix-user-chroot ~/.nix bash -c "sh <(curl -L https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.7.0pre20220127_558c4ee/install)"
 #     $ nix-user-chroot ~/.nix bash -c "curl -L https://nixos.org/nix/install | bash"
-#     log out and log in again with the below "Login procedure" and type 
+#     log out and log in again with the below "Login procedure" and type
 #     $ . /home/sepiabrown/.nix-profile/etc/profile.d/nix.sh
 #     $ cd dotfiles
 #     $ nix build .#homeConfigurations.sepiabrown.activationPackage --extra-experimental-features flakes --extra-experimental-features nix-command
 #
 #   - Login procedure
-#   $ ssh -X -p 7777 -t sepiabrown@snubayes.duckdns.org "./.cargo/bin/nix-user-chroot ~/.nix bash -l"     
+#   $ ssh -X -p 7777 -t sepiabrown@snubayes.duckdns.org "./.cargo/bin/nix-user-chroot ~/.nix bash -l"
 #   $ unset HISTFILE
 # After installing flake:
 # $ git update-index --skip-worktree flake.lock
@@ -146,7 +146,7 @@
         vim = {
           enable = true;
           extraConfig = ''
-            set mouse=a 
+            set mouse=a
           '';
         };
 
@@ -190,7 +190,7 @@
 
         #gh = {
         #  enable = true;
-        #  gitProtocol = "ssh";
+        #  #gitProtocol = "ssh";
         #  settings.git_protocol = "ssh"; # after release-21.05
         #};
 
@@ -239,7 +239,7 @@
 
             export PATH
 
-            if [ -e ''$HOME/.cargo/env ]; then . ''$HOME/.cargo/env; fi 
+            if [ -e ''$HOME/.cargo/env ]; then . ''$HOME/.cargo/env; fi
 
             if [ -e ''$HOME/.nix-profile/etc/profile.d/nix.sh ]; then . ''$HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
             #echo "end profile"
@@ -304,7 +304,7 @@
               fi
             fi
 
-            if [ -e ''$HOME/.cargo/env ]; then . ''$HOME/.cargo/env; fi 
+            if [ -e ''$HOME/.cargo/env ]; then . ''$HOME/.cargo/env; fi
             #echo "end bashrc"
           '';
         };
@@ -375,7 +375,7 @@
                   done
                 elif [ ''${direction} == "r" -a ''${safe} == "y" ]; then
                   for RCPATH in $RCLONEPATHS; do
-                    echo "''${RCLONEHOME}''${RCPATH}"  
+                    echo "''${RCLONEHOME}''${RCPATH}"
                     rclone mkdir "''${RCLONEHOME}''${RCPATH}"
                     rclone $task "''${RCLONEREMOTE}''${RCPATH}" "''${RCLONEHOME}''${RCPATH}" --backup-dir "''${RCLONEHOME}/tmp" --suffix .rclone --verbose --filter-from "''${FILTERFILEDOWNLOAD}"
                   done
@@ -390,7 +390,7 @@
                   # for RCPATH in $RCLONEPATHS do
                     rclone $task "''${RCLONEHOME}_mobile/structured" "''${RCLONEREMOTE2}/_mobile/structured" --backup-dir "''${RCLONEREMOTE2}/tmp" --suffix .rclone --verbose --filter-from "''${FILTERFILEUPLOAD}"
                   # done
-                else 
+                else
                   read -p "Error : Press [Enter] key to end..."
                   exit 1
                 fi
@@ -464,14 +464,14 @@
         #eval "''$(direnv hook bash)"
         #'';
         #".direnvrc".text = ''
-        #source /run/current-system/sw/share/nix-direnv/direnvrc 
+        #source /run/current-system/sw/share/nix-direnv/direnvrc
         #'';
       };
     }
   ];
 }
 # TODO 1
-# environment = {  
+# environment = {
 #   etc."ipsec.secrets".text = ''
 #     include ipsec.d/ipsec.nm-l2tp.secrets
 #   '';
