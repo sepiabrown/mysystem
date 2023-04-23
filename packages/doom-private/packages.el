@@ -68,7 +68,11 @@
 ;; (unpin! org-roam)
 (package! org-roam-ui)
 
+(package! org-ai)
+
 (package! string-inflection)
+
+(package! gptel)
 
 (package! rg)
 

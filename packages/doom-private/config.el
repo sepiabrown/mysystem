@@ -264,6 +264,19 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
+(use-package! org-ai
+  :commands (org-ai-mode
+             org-ai-global-mode)
+  :init
+  (add-hook 'org-mode-hook #'org-ai-mode) ; enable org-ai in org-mode
+  (org-ai-global-mode) ; installs global keybindings on C-c M-a
+  :config
+  (setq org-ai-default-chat-model "gpt-3.5-turbo")
+  ;; (setq org-ai-default-chat-model "gpt-4")
+  ;; (org-ai-install-yasnippets) ; if you are using yasnippet and want `ai` snippets
+  (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com"))
+  )
+
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
 (setq-default indent-tabs-mode nil)
@@ -320,6 +333,10 @@
         '("Nix Packages"      "https://search.nixos.org/packages?channel=unstable&query=%s")
         '("Nix Options"       "https://search.nixos.org/options?channel=unstable&query=%s")
         '("Libgen"            "http://libgen.rs/search.php?req=%s")))
+
+(use-package! gptel
+ :config
+ (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com")))
 
 (use-package! rg
   :commands (rg rg-menu)
