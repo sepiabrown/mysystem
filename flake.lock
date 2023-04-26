@@ -53,16 +53,17 @@
     "consult": {
       "flake": false,
       "locked": {
-        "lastModified": 1682070642,
-        "narHash": "sha256-XAF/m9Aj8JP2dzBnTmBMLPaWAgMzviDh/I+Ts1uUZ/s=",
+        "lastModified": 1670046353,
+        "narHash": "sha256-n7bka1tB8k4LEjApAOJNme7T0XIEP8ZqThVJGEIJk4c=",
         "owner": "minad",
         "repo": "consult",
-        "rev": "c75ab8223e2c52b5ace0001a09728159b326a9dd",
+        "rev": "c3608b1f634aebf8770ecb1d933a1ae9c34ecdf8",
         "type": "github"
       },
       "original": {
         "owner": "minad",
         "repo": "consult",
+        "rev": "c3608b1f634aebf8770ecb1d933a1ae9c34ecdf8",
         "type": "github"
       }
     },
@@ -595,11 +596,11 @@
         "ws-butler": "ws-butler"
       },
       "locked": {
-        "lastModified": 1682219029,
-        "narHash": "sha256-cv57cio5MHN8RqJe0aEeWnfT8bUBrVVu3Pe9WNyHZM8=",
+        "lastModified": 1682520173,
+        "narHash": "sha256-Z2bPGEL4j0kDN8axe5CbubJF90EoDje8UTr/IZ0Tzd0=",
         "owner": "jjdosa",
         "repo": "nix-doom-emacs",
-        "rev": "f030c4bd501fd3a743d26e16faa080c33b437e2d",
+        "rev": "54abaf0d16e5b1fbbf04f49f977c48766449f9f3",
         "type": "github"
       },
       "original": {
