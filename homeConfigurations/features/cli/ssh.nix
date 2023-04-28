@@ -93,6 +93,19 @@ in
         hostname = "20.20.100.2";
       };
 
+      "hproxy2220" = {
+        forwardX11 = true;
+        hostname = "20.20.100.1";
+        port = 2220;
+        user = "solma";
+      };
+
+      "gitea" = {
+        hostname = "20.20.1.1";
+        proxyJump = "hproxy2220";
+        user = "solma";
+      };
+
     }
     // builders
     // hpc-nodes;
