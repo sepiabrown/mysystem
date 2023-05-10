@@ -64,6 +64,7 @@ in
     nixos-shell
     dig
     dasel
+    xpra
   ] ++
   (with mypackages; [
     tmux
