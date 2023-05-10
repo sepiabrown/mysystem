@@ -1020,6 +1020,18 @@ FIXME - nix-doom-emacs way of installing does not work
 
 #+end_src
 
+
+In case you want to load the key from a file then ues the code snippet below.
+
+#+begin_src emacs-lisp :tangle no
+
+(let ((key (string-trim (with-temp-buffer
+             (insert-file-contents "/home/jj/public")
+             (buffer-string))))
+     (setq gptel-api-key key))
+
+#+end_src
+
 ** Navigation
 *** Rg
 
