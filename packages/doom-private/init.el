@@ -7,10 +7,10 @@
        
        (company                     ; the ultimate code completion backend
         +childframe)                ; ... when your children are better than you
-       (vertico +icons)             ; the search engine of the future
+       ;;(vertico +icons)             ; the search engine of the future
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ;;ivy               ; a search engine for love and life
+       ivy               ; a search engine for love and life
        
 
        :ui
