@@ -274,7 +274,7 @@
   (setq org-ai-default-chat-model "gpt-3.5-turbo")
   ;; (setq org-ai-default-chat-model "gpt-4")
   ;; (org-ai-install-yasnippets) ; if you are using yasnippet and want `ai` snippets
-  (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com"))
+  (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz"))
   )
 
 (setq-default tab-width 2)
@@ -336,7 +336,7 @@
 
 (use-package! gptel
  :config
- (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com")))
+ (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz")))
 
 (use-package! rg
   :commands (rg rg-menu)
