@@ -322,6 +322,12 @@
 
 (use-package! string-inflection)
 
+(use-package! lsp-grammarly
+  :ensure t
+  :hook (text-mode . (lambda ()
+                       (require 'lsp-grammarly)
+                       (lsp))))  ; or lsp-deferred
+
 (mapc (lambda (x) (add-to-list '+lookup-provider-url-alist x))
       (list
         '("Hackage"           "http://hackage.haskell.org/package/%s")

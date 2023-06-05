@@ -985,6 +985,25 @@ FIXME - nix-doom-emacs way of installing does not work
 (use-package! string-inflection)
 
 #+end_src
+
+*** Grammarly
+
+#+begin_src emacs-lisp :tangle packages.el
+
+(package! lsp-grammarly)
+
+#+end_src
+
+#+begin_src emacs-lisp
+
+(use-package! lsp-grammarly
+  :ensure t
+  :hook (text-mode . (lambda ()
+                       (require 'lsp-grammarly)
+                       (lsp))))  ; or lsp-deferred
+
+#+end_src
+
 ** Search
 *** Additional Lookup Providers
 
