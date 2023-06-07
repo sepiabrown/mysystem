@@ -23,14 +23,16 @@
           in
           [
             # test
-            brave
 
             # network
             dropbox
             nextcloud-client
+            brave
+            firefox
 
             # system
             glxinfo
+            brightnessctl
 
             # tools
             libreoffice
@@ -82,6 +84,7 @@
           cachix
           nix-index
           nix-tree
+          gh
 
           # system
           #glxinfo

@@ -94,10 +94,17 @@
         ];
     })
     {
+      nixpkgs.config.permittedInsecurePackages = [
+        "openssl-1.1.1u"
+      ];
+
       home.packages = with pkgs;
         [
           # test
           # hello
+
+          # web
+          lynx
 
           # keyboard
           xorg.xev
@@ -124,6 +131,7 @@
           dua # Disk Usage
           duc # Disk Usage
           testdisk # data recovery software. recover lost partition, make non booting disk bootable again
+          brightnessctl
 
           # dev
           poetry
@@ -180,11 +188,11 @@
         #  userEmail = "sepiabrown@naver.com";
         #};
 
-        gh = {
-          enable = true;
-          #gitProtocol = "ssh";
-          settings.git_protocol = "ssh"; # after release-21.05
-        };
+        #gh = {
+        #  enable = true;
+        #  gitProtocol = "ssh";
+        #  settings.git_protocol = "ssh"; # after release-21.05
+        #};
 
         direnv = {
           enable = true;
@@ -442,12 +450,12 @@
         "filter-file-download".text = ''
           - ltximg/**
         '';
-        ".config/gh/hosts.yml".text = ''
-          github.com:
-              user: sepiabrown
-              oauth_token: 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
-              git_protocol: ssh
-        '';
+        #".config/gh/hosts.yml".text = ''
+        #  github.com:
+        #      user: sepiabrown
+        #      oauth_token: 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
+        #      git_protocol: ssh
+        #'';
         #".config/nix/nix.conf".text = builtins.readFile ./nix.conf;
         ".kaggle/kaggle.json".text = ''
           {"username":"suwonpark","key":"ffd3b06e5b9b6b853dc64b736a430f73"}

@@ -1217,8 +1217,8 @@
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "rev": "825ad30f7065800760becd03bd2aeebc6434757f",
         "type": "github"
       }
     },
