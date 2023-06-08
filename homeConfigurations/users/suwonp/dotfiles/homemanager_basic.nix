@@ -16,6 +16,7 @@
 #     $ nix build .#homeConfigurations.x86_64-darwin.sepiabrown.activationPackage --extra-experimental-features flakes --extra-experimental-features nix-command
 #     $ ./result/activate
 #     $ home-manager switch --flake '<flake-uri>#jdoe'
+#     $ fc-cache -f
 #   - current priority
 #     - nix-2.9 : 4
 #     - home-manager-path : 5
