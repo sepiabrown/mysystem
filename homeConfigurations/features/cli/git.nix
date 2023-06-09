@@ -11,7 +11,7 @@ let
       cmd    = "nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"";
       prompt = false;
     };
-    pull.rebase = false;
+    pull.rebase = true;
     init.defaultBranch = "master";
     lfs.enable = true;
     feature.manyFiles = true;
