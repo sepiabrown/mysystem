@@ -9,6 +9,15 @@ in
     distributedBuilds = true;
     buildMachines = [
       {
+        hostName = "10.10.100.7";
+        inherit sshUser sshKey;
+        system = "x86_64-linux";
+        maxJobs = 16;
+        speedFactor = 4;
+        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+        mandatoryFeatures = [ ];
+      }
+      {
         hostName = "10.10.100.3";
         inherit sshUser sshKey;
         system = "x86_64-linux";
@@ -17,24 +26,24 @@ in
         supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
         mandatoryFeatures = [ ];
       }
-      {
-        hostName = "10.10.100.4";
-        inherit sshUser sshKey;
-        system = "x86_64-linux";
-        maxJobs = 8;
-        speedFactor = 4;
-        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-        mandatoryFeatures = [ ];
-      }
-      {
-        hostName = "10.10.100.5";
-        inherit sshUser sshKey;
-        system = "x86_64-linux";
-        maxJobs = 8;
-        speedFactor = 4;
-        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-        mandatoryFeatures = [ ];
-      }
+      # {
+      #   hostName = "10.10.100.4";
+      #   inherit sshUser sshKey;
+      #   system = "x86_64-linux";
+      #   maxJobs = 8;
+      #   speedFactor = 4;
+      #   supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      #   mandatoryFeatures = [ ];
+      # }
+      # {
+      #   hostName = "10.10.100.5";
+      #   inherit sshUser sshKey;
+      #   system = "x86_64-linux";
+      #   maxJobs = 8;
+      #   speedFactor = 4;
+      #   supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      #   mandatoryFeatures = [ ];
+      # }
     ];
 
   };
