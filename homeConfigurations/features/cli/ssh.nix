@@ -5,7 +5,7 @@ let
     value = {
       hostname = "10.10.100.${toString n}";
     };
-  } ) [ 1 2 3 4 5 ]);
+  } ) [ 3 4 5 7]);
 
 
   hpc-nodes = __listToAttrs (map (n: {
