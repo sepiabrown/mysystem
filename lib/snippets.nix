@@ -37,11 +37,13 @@ rec
         vgcreate lvm /dev/mapper/enc
 
         # create swap and format
+        # lvcreate -i 4 --size 8G --name swap lvm
         lvcreate --size 8G --name swap lvm
         mkswap /dev/lvm/swap -L swap
         swapon /dev/lvm/swap
 
         # create root and format in btrfs
+        # lvcreate -i 4 --extents 100%FREE --name ${root-label} lvm
         lvcreate --extents 100%FREE --name ${root-label} lvm
         ${pkgs.btrfs-progs}/bin/mkfs.btrfs /dev/lvm/root -L ${root-label}
 
