@@ -43,13 +43,10 @@ in {
   home.packages = [
     kmonad
     myxset
-  ] ++ builtins.attrValues kmonadScripts;
+  ] ++ __attrValues kmonadScripts;
 
   xsession.enable = true;
   xsession.initExtra = ''
-    kmonad-hhkb-usb &
-    kmonad-hhkb-blt &
-    kmonad-x1_dvorak &
     myxset
   '';
   # xsession.initExtra = ''

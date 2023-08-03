@@ -132,6 +132,14 @@ for the \"main\" or \"master\" branch."
 
 (add-hook 'magit-mode-hook #'modi/add-PR-fetch-ref)
 
+  (defun my/org-todo-keywords()
+    (setq
+      org-todo-keywords '((sequence "TODO(T)" "PROJ(P)" "LOOP(R)" "STRT(S!)" "WAIT(W!)" "HOLD(H!)" "IDEA(I!)" "|" "DONE(D!)" "KILL(K!)")
+                          (sequence "[ ](t)" "[-](s!)" "[?](w!)" "|" "[X](d!)")
+                          (sequence "|" "OKAY(o)" "YES(y)" "NO(n)"))
+    )
+  )
+
   (defun my/org-archive()
     (setq
       org-archive-mark-done nil
@@ -232,6 +240,7 @@ for the \"main\" or \"master\" branch."
   (org-attach-id-dir                   "data/")
   (org-export-with-sub-superscripts (quote {}))
   :config
+  (my/org-todo-keywords)
   (my/org-archive)
   (my/org-capture)
   (my/org-agenda)
@@ -287,18 +296,18 @@ for the \"main\" or \"master\" branch."
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
-(use-package! org-ai
-  :commands (org-ai-mode
-             org-ai-global-mode)
-  :init
-  (add-hook 'org-mode-hook #'org-ai-mode) ; enable org-ai in org-mode
-  (org-ai-global-mode) ; installs global keybindings on C-c M-a
-  :config
-  (setq org-ai-default-chat-model "gpt-3.5-turbo")
-  ;; (setq org-ai-default-chat-model "gpt-4")
-  ;; (org-ai-install-yasnippets) ; if you are using yasnippet and want `ai` snippets
-  (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz"))
-  )
+;; (use-package! org-ai
+;;   :commands (org-ai-mode
+;;              org-ai-global-mode)
+;;   :init
+;;   (add-hook 'org-mode-hook #'org-ai-mode) ; enable org-ai in org-mode
+;;   (org-ai-global-mode) ; installs global keybindings on C-c M-a
+;;   :config
+;;   (setq org-ai-default-chat-model "gpt-3.5-turbo")
+;;   ;; (setq org-ai-default-chat-model "gpt-4")
+;;   ;; (org-ai-install-yasnippets) ; if you are using yasnippet and want `ai` snippets
+;;   ;; (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz"))
+;;   )
 
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
@@ -357,9 +366,9 @@ for the \"main\" or \"master\" branch."
         '("Nix Options"       "https://search.nixos.org/options?channel=unstable&query=%s")
         '("Libgen"            "http://libgen.rs/search.php?req=%s")))
 
-(use-package! gptel
- :config
- (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz")))
+;; (use-package! gptel
+;;  :config
+;;  (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz")))
 
 (use-package! rg
   :commands (rg rg-menu)
