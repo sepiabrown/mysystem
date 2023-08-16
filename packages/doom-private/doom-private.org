@@ -1015,23 +1015,23 @@ FIXME - nix-doom-emacs way of installing does not work
 
 #+end_src
 
-*** Grammarly
+# *** Grammarly
 
-#+begin_src emacs-lisp :tangle packages.el
+# #+begin_src emacs-lisp :tangle packages.el
 
-(package! lsp-grammarly)
+# (package! lsp-grammarly)
 
-#+end_src
+# #+end_src
 
-#+begin_src emacs-lisp
+# #+begin_src emacs-lisp
 
-(use-package! lsp-grammarly
-  :ensure t
-  :hook (text-mode . (lambda ()
-                       (require 'lsp-grammarly)
-                       (lsp))))  ; or lsp-deferred
+# (use-package! lsp-grammarly
+#   :ensure t
+#   :hook (text-mode . (lambda ()
+#                        (require 'lsp-grammarly)
+#                        (lsp))))  ; or lsp-deferred
 
-#+end_src
+# #+end_src
 
 ** Search
 *** Additional Lookup Providers

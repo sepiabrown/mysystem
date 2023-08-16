@@ -72,8 +72,6 @@
 
 (package! string-inflection)
 
-(package! lsp-grammarly)
-
 (package! gptel)
 
 (package! rg)
