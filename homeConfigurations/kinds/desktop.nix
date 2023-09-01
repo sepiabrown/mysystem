@@ -52,6 +52,8 @@ in
     ../features/xmonad.nix
     # ../features/picom # results in flickering..
 
+    ../features/tightvnc.nix
+
   ];
 
   colorscheme = lib.mkDefault colorSchemes.dracula;
