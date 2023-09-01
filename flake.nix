@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-melt.url = "github:nix-community/nix-melt";
+
+    nix-visualize.url = "github:craigmbooth/nix-visualize";
+    nix-visualize.flake = false;
+
   };
 
   outputs = inputs@{ nixpkgs, ... }:
