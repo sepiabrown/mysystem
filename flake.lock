@@ -411,6 +411,22 @@
         "type": "github"
       }
     },
+    "giter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688131671,
+        "narHash": "sha256-LYupBe1JKqwOHNQ2MKJZyxZDp1dKnchk21EWly+0pX4=",
+        "owner": "refaelsh",
+        "repo": "giter",
+        "rev": "29be78b42850b71fd8698363375a3c7b9eb2e97a",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "refaelsh",
+        "repo": "giter",
+        "type": "gitlab"
+      }
+    },
     "gptel": {
       "flake": false,
       "locked": {
@@ -957,6 +973,7 @@
         "agenix": "agenix",
         "deploy-rs": "deploy-rs",
         "emanote": "emanote",
+        "giter": "giter",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "kmonad": "kmonad",

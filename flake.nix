@@ -48,6 +48,9 @@
     nix-visualize.url = "github:craigmbooth/nix-visualize";
     nix-visualize.flake = false;
 
+    giter.url = "gitlab:refaelsh/giter";
+    giter.flake = false;
+
   };
 
   outputs = inputs@{ nixpkgs, ... }:

@@ -17,6 +17,7 @@ in
     ./nix-index.nix
     ./pfetch.nix
     ./htop.nix
+    ./giter.nix
   ];
 
 
