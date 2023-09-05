@@ -78,8 +78,13 @@
 
       services = {
         gpg-agent = {
-          enable = true;
+          # enable = true;
           pinentryFlavor = "qt";
+          # enableSshSupport = true;
+          # defaultCacheTtl = pkgs.lib.mkForce 2592000; #== 30 days in seconds
+          # defaultCacheTtlSsh = pkgs.lib.mkForce 2592000; #== 30 days in seconds
+          maxCacheTtl = 3153600000; #== 100 years in seconds
+          maxCacheTtlSsh = 3153600000; #== 100 years in seconds
         };
       };
 
