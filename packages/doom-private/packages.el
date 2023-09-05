@@ -53,13 +53,11 @@
 
 (package! winum)
 
-(package! lsp-ui)
+;; (package! lsp-ui)
 
-(package! lsp-haskell)
+;; (package! consult-lsp)
 
-(package! consult-lsp)
-
-(package! consult-eglot)
+;; (package! consult-eglot)
 
 (package! swagger-to-org)
 
@@ -71,8 +69,6 @@
 ;; (package! org-ai)
 
 (package! string-inflection)
-
-;; (package! lsp-grammarly)
 
 ;; (package! gptel)
 

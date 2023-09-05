@@ -9,7 +9,7 @@
   ];
 
   userInfo.name = "Suwon Park";
-  userInfo.email = "sepiabrown@naver.com";
+  userInfo.email = "suwonpark@haedosa.xyz";
 
   home.username = "suwonp";
   home.homeDirectory = "/home/${config.home.username}";

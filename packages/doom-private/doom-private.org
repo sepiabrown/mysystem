@@ -1,5 +1,5 @@
 #+title: DOOM Emacs Configuration
-#+author: JJ Kim
+#+author: Suwon Park
 #+description: A Doom Emacs Configuration
 #+startup: fold
 #+property: header-args:emacs-lisp :tangle yes :comments no
@@ -197,7 +197,8 @@ editorconfig      ; let someone else argue about tabs vs spaces
 (lookup           ; helps you navigate your code and documentation
  +dictionary      ; dictionary/thesaurus is nice
  +docsets)        ; ...or in Dash docsets locally
-(lsp +eglot)               ; M-x vscode
+lsp
+;;(lsp +eglot)               ; M-x vscode
 magit             ; a git porcelain for Emacs
 ;;make              ; run make tasks from Emacs
 ;;pass              ; password manager for nerds
@@ -382,15 +383,35 @@ yaml              ; JSON, but readable
 
 #+begin_src emacs-lisp
 
-(setq user-full-name "JJ Kim"
-      user-mail-address "jj@haedosa.xyz")
+(setq user-full-name "Suwon Park"
+      user-mail-address "suwonpark@haedosa.xyz")
 
 #+end_src
 ** Hangul
 
 #+begin_src emacs-lisp
 
-(setq default-input-method "korean-hangul3f")
+;; (after! quail
+;;   (add-to-list 'quail-keyboard-layout-alist
+;;                `("dvorak" . ,(concat "                              "
+;;                                      "  1!2@3#4$5%6^7&8*9(0)[{]}`~  "
+;;                                      "  '\",<.>pPyYfFgGcCrRlL/?=+    "
+;;                                      "  aAoOeEuUiIdDhHtTnNsS-_\\|    "
+;;                                      "  ;:qQjJkKxXbBmMwWvVzZ        "
+;;                                      "                              ")))
+;;   (quail-set-keyboard-layout "dvorak"))
+
+;; (set-language-environment-input-method "Korean")
+;; (setq default-input-method "korean-hangul390")
+;; (setq default-korean-keyboard "390")
+;; (global-set-key (kbd "C-<Hangul>") 'toggle-input-method)
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
+(register-input-method
+ "foo" "French" 'quail-use-package
+ "FOO@" "Example input method"
+ "foo-input-method")
 
 #+end_src
 
@@ -507,24 +528,46 @@ yaml              ; JSON, but readable
 #+end_src
 
 *** lsp
-**** lsp
+**** lsp-mode
 
 #+begin_src emacs-lisp
 
 (use-package! lsp-mode
+  :hook ((haskell-mode . lsp-deferred)
+         (haskell-mode . (lambda ()
+                           (set-tab-width)
+                           (turn-off-smartparens-mode)
+                           (setq lsp-haskell-formatting-provider "fourmolu")
+                           (global-subword-mode)
+                           )))
   :custom
-  (lsp-completion-enable-additional-text-edit nil)
-  (lsp-lens-enable nil)
+  ;; (lsp-completion-enable-additional-text-edit nil)
+  ;; (lsp-lens-enable nil)
   (lsp-keymap-prefix "C-c l")
   (lsp-headerline-breadcrumb-enable nil)
-  (lsp-ui-sideline-enable nil)
-  (lsp-ui-sideline-show-diagnostics nil)
-  (lsp-modeline-diagnostics-enable nil)
-  ;;(lsp-eldoc-enable-hover nil)
+  ;; (lsp-ui-sideline-enable nil)
+  ;; (lsp-ui-sideline-show-diagnostics nil)
+  ;; (lsp-modeline-diagnostics-enable nil)
+  ;; (lsp-eldoc-enable-hover nil)
   :config
   (map! "C-,"       #'lsp-execute-code-action)
 )
 
+;; (add-hook 'lsp-after-open-hook (lambda ()
+;;    (lsp-ui-mode -1)
+;;    ))
+
+#+end_src
+
+**** lsp-mode issue
+
+https://github.com/hlissner/doom-emacs/issues/5904
+
+#+begin_src emacs-lisp
+
+;; add to $DOOMDIR/config.el
+;; (after! lsp-mode
+;;   (advice-remove #'lsp #'+lsp-dont-prompt-to-install-servers-maybe-a))
 
 #+end_src
 
@@ -532,14 +575,7 @@ yaml              ; JSON, but readable
 
 #+begin_src emacs-lisp :tangle packages.el
 
-(package! lsp-ui)
-
-#+end_src
-
-#+begin_src emacs-lisp
-
-(use-package! lsp-ui
-  :disabled t)
+;; (package! lsp-ui)
 
 #+end_src
 
@@ -569,35 +605,11 @@ yaml              ; JSON, but readable
 
 #+end_src
 
-**** lsp-haskell
-
-#+begin_src emacs-lisp :tangle packages.el
-
-(package! lsp-haskell)
-
-#+end_src
-
-#+begin_src emacs-lisp
-
-(use-package! haskell-mode
-  :hook ((haskell-mode . lsp-deferred)
-         (haskell-mode . (lambda ()
-                           (set-tab-width)
-                           (turn-off-smartparens-mode)
-                           (setq lsp-haskell-formatting-provider "fourmolu")
-                           (global-subword-mode)
-                           ))))
-
-(add-hook 'lsp-after-open-hook (lambda ()
-   (lsp-ui-mode -1)
-   ))
-
-#+end_src
 **** consult-lsp
 
 #+begin_src emacs-lisp :tangle packages.el
 
-(package! consult-lsp)
+;; (package! consult-lsp)
 
 #+end_src
 
@@ -605,21 +617,10 @@ yaml              ; JSON, but readable
 
 #+begin_src emacs-lisp :tangle packages.el
 
-(package! consult-eglot)
+;; (package! consult-eglot)
 
 #+end_src
 
-**** lsp-mode issue
-
-https://github.com/hlissner/doom-emacs/issues/5904
-
-#+begin_src emacs-lisp
-
-;; add to $DOOMDIR/config.el
-(after! lsp-mode
-  (advice-remove #'lsp #'+lsp-dont-prompt-to-install-servers-maybe-a))
-
-#+end_src
 *** Magit
 
 #+begin_src emacs-lisp
@@ -648,7 +649,8 @@ for the \"main\" or \"master\" branch."
 (add-hook 'magit-mode-hook #'modi/add-PR-fetch-ref)
 
 #+end_src
-
+#+RESULTS:
+| +modeline-hide-in-non-status-buffer-h | modi/add-PR-fetch-ref | turn-on-magit-gitflow | doom--setq-evil-ex-hl-update-delay-for-magit-mode-h |
 ** Org Mode
 *** Org Todo Keywords
 
@@ -851,7 +853,6 @@ causes conflict in syncing files between linux and mac.
     org-roam-directory))
 
 (use-package! org-roam
-  :ensure t
   :custom
   (org-roam-directory (my/org-roam-directory))
   (org-roam-completion-everywhere t)
@@ -928,7 +929,7 @@ FIXME - nix-doom-emacs way of installing does not work
 ;;   (setq org-ai-default-chat-model "gpt-3.5-turbo")
 ;;   ;; (setq org-ai-default-chat-model "gpt-4")
 ;;   ;; (org-ai-install-yasnippets) ; if you are using yasnippet and want `ai` snippets
-;;   ;; (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz"))
+;;   ;; (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/suwonpark@haedosa.xyz"))
 ;;   )
 
 #+end_src
@@ -1033,17 +1034,17 @@ FIXME - nix-doom-emacs way of installing does not work
 
 # #+begin_src emacs-lisp :tangle packages.el
 
-# (package! lsp-grammarly)
+;; (package! lsp-grammarly)
 
 # #+end_src
 
 # #+begin_src emacs-lisp
 
-# (use-package! lsp-grammarly
-#   :ensure t
-#   :hook (text-mode . (lambda ()
-#                        (require 'lsp-grammarly)
-#                        (lsp))))  ; or lsp-deferred
+;; (use-package! lsp-grammarly
+;;   :ensure t
+;;   :hook (text-mode . (lambda ()
+;;                        (require 'lsp-grammarly)
+;;                        (lsp))))  ; or lsp-deferred
 
 # #+end_src
 
@@ -1078,7 +1079,7 @@ FIXME - nix-doom-emacs way of installing does not work
 
 ;; (use-package! gptel
 ;;  :config
-;;  (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz")))
+;;  (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/suwonpark@haedosa.xyz")))
 
 #+end_src
 
@@ -1088,7 +1089,7 @@ In case you want to load the key from a file then ues the code snippet below.
 #+begin_src emacs-lisp :tangle no
 
 ;; (let ((key (string-trim (with-temp-buffer
-;;              (insert-file-contents "/home/jj/public")
+;;              (insert-file-contents "/home/suwonp/h")
 ;;              (buffer-string))))
 ;;      (setq gptel-api-key key))
 

@@ -1,7 +1,27 @@
-(setq user-full-name "JJ Kim"
-      user-mail-address "jj@haedosa.xyz")
+(setq user-full-name "Suwon Park"
+      user-mail-address "suwonpark@haedosa.xyz")
 
-(setq default-input-method "korean-hangul3f")
+;; (after! quail
+;;   (add-to-list 'quail-keyboard-layout-alist
+;;                `("dvorak" . ,(concat "                              "
+;;                                      "  1!2@3#4$5%6^7&8*9(0)[{]}`~  "
+;;                                      "  '\",<.>pPyYfFgGcCrRlL/?=+    "
+;;                                      "  aAoOeEuUiIdDhHtTnNsS-_\\|    "
+;;                                      "  ;:qQjJkKxXbBmMwWvVzZ        "
+;;                                      "                              ")))
+;;   (quail-set-keyboard-layout "dvorak"))
+
+;; (set-language-environment-input-method "Korean")
+;; (setq default-input-method "korean-hangul390")
+;; (setq default-korean-keyboard "390")
+;; (global-set-key (kbd "C-<Hangul>") 'toggle-input-method)
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+
+(register-input-method
+ "foo" "French" 'quail-use-package
+ "FOO@" "Example input method"
+ "foo-input-method")
 
 (setq-default backup-directory-alist '(("" . "~/.backup"))
               make-backup-files t
@@ -56,21 +76,33 @@
   :hook (after-init . envrc-global-mode))
 
 (use-package! lsp-mode
+  :hook ((haskell-mode . lsp-deferred)
+         (haskell-mode . (lambda ()
+                           (set-tab-width)
+                           (turn-off-smartparens-mode)
+                           (setq lsp-haskell-formatting-provider "fourmolu")
+                           (global-subword-mode)
+                           )))
   :custom
-  (lsp-completion-enable-additional-text-edit nil)
-  (lsp-lens-enable nil)
+  ;; (lsp-completion-enable-additional-text-edit nil)
+  ;; (lsp-lens-enable nil)
   (lsp-keymap-prefix "C-c l")
   (lsp-headerline-breadcrumb-enable nil)
-  (lsp-ui-sideline-enable nil)
-  (lsp-ui-sideline-show-diagnostics nil)
-  (lsp-modeline-diagnostics-enable nil)
-  ;;(lsp-eldoc-enable-hover nil)
+  ;; (lsp-ui-sideline-enable nil)
+  ;; (lsp-ui-sideline-show-diagnostics nil)
+  ;; (lsp-modeline-diagnostics-enable nil)
+  ;; (lsp-eldoc-enable-hover nil)
   :config
   (map! "C-,"       #'lsp-execute-code-action)
 )
 
-(use-package! lsp-ui
-  :disabled t)
+;; (add-hook 'lsp-after-open-hook (lambda ()
+;;    (lsp-ui-mode -1)
+;;    ))
+
+;; add to $DOOMDIR/config.el
+;; (after! lsp-mode
+;;   (advice-remove #'lsp #'+lsp-dont-prompt-to-install-servers-maybe-a))
 
 (after! lsp-ui
   (setq lsp-ui-doc-position 'top)
@@ -91,23 +123,6 @@
   (setq lsp-ui-doc-text-scale-level 2)
   (setq lsp-ui-doc-max-width 300)
   (setq lsp-ui-doc-max-height 50))
-
-(use-package! haskell-mode
-  :hook ((haskell-mode . lsp-deferred)
-         (haskell-mode . (lambda ()
-                           (set-tab-width)
-                           (turn-off-smartparens-mode)
-                           (setq lsp-haskell-formatting-provider "fourmolu")
-                           (global-subword-mode)
-                           ))))
-
-(add-hook 'lsp-after-open-hook (lambda ()
-   (lsp-ui-mode -1)
-   ))
-
-;; add to $DOOMDIR/config.el
-(after! lsp-mode
-  (advice-remove #'lsp #'+lsp-dont-prompt-to-install-servers-maybe-a))
 
 (defun modi/add-PR-fetch-ref (&optional remote-name)
   "If refs/pull is not defined on a GH repo, define it.
@@ -258,7 +273,6 @@ for the \"main\" or \"master\" branch."
     org-roam-directory))
 
 (use-package! org-roam
-  :ensure t
   :custom
   (org-roam-directory (my/org-roam-directory))
   (org-roam-completion-everywhere t)
@@ -306,7 +320,7 @@ for the \"main\" or \"master\" branch."
 ;;   (setq org-ai-default-chat-model "gpt-3.5-turbo")
 ;;   ;; (setq org-ai-default-chat-model "gpt-4")
 ;;   ;; (org-ai-install-yasnippets) ; if you are using yasnippet and want `ai` snippets
-;;   ;; (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz"))
+;;   ;; (setq org-ai-openai-api-token (auth-source-pass-get 'secret "keys/api.openai.com/suwonpark@haedosa.xyz"))
 ;;   )
 
 (setq-default tab-width 2)
@@ -368,7 +382,7 @@ for the \"main\" or \"master\" branch."
 
 ;; (use-package! gptel
 ;;  :config
-;;  (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/jj@haedosa.xyz")))
+;;  (setq gptel-api-key (auth-source-pass-get 'secret "keys/api.openai.com/suwonpark@haedosa.xyz")))
 
 (use-package! rg
   :commands (rg rg-menu)
