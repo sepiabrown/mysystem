@@ -349,6 +349,17 @@
           theme = "Space Gray Eighties";
         };
       };
+      programs.ssh = {
+        enable = true;
+        matchBlocks = {
+          "legion" = {
+            forwardAgent = true;
+            hostname = "10.10.0.66";
+            user = "suwonp";
+            identityFile = "~/.ssh/id_ed25519";
+          };
+        };
+      };
 
       home.file = {
         "my.rclone".source = pkgs.writeScript "my_rclone" ''
