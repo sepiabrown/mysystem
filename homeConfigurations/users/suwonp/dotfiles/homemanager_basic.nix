@@ -330,9 +330,9 @@
         #  clock24 = true;
         #  baseIndex = 1;
         #  extraConfig = ''
-        #    bind-key '"' split-window -c '#{pane_current_path}' 
-        #    bind-key % split-window -h -c '#{pane_current_path}' 
-        #    bind-key c new-window -c '#{pane_current_path}' 
+        #    bind-key '"' split-window -c '#{pane_current_path}'
+        #    bind-key % split-window -h -c '#{pane_current_path}'
+        #    bind-key c new-window -c '#{pane_current_path}'
         #  '';
         #  #newSession = true;
         #};
