@@ -1054,22 +1054,22 @@ https://emacs.stackexchange.com/questions/18262/tramp-how-to-add-a-agent-forward
 https://www.gnu.org/software/emacs/manual/html_node/tramp/Remote-shell-setup.html
 #+begin_src emacs-lisp
 
-;; (defun add-ssh-agent-to-tramp ()
-;;   (cl-pushnew '("-A")
-;;               (cadr (assoc 'tramp-login-args
-;;                            ; if on Windows using Putty with Pageant,
-;;                            ; replace "ssh" with "plink"
-;;                            (assoc "ssh" tramp-methods)))
-;;               :test #'equal))
+(defun add-ssh-agent-to-tramp ()
+  (cl-pushnew '("-A")
+              (cadr (assoc 'tramp-login-args
+                           ; if on Windows using Putty with Pageant,
+                           ; replace "ssh" with "plink"
+                           (assoc "ssh" tramp-methods)))
+              :test #'equal))
 
-;; (after! tramp
-;;   ;; (add-ssh-agent-to-tramp)
-;;   (add-to-list 'tramp-connection-properties
-;;              (list (regexp-quote "/ssh:legion:")
-;;                    "remote-shell" "~/.nix-profile/bin/bash"))
-;;   (add-to-list 'tramp-connection-properties
-;;              (list (regexp-quote "/ssh:suwonp@10.10.0.66:")
-;;                    "remote-shell" "~/.nix-profile/bin/bash")))
+(after! tramp
+  ;; (add-ssh-agent-to-tramp)
+  (add-to-list 'tramp-connection-properties
+             (list (regexp-quote "/ssh:legion:")
+                   "remote-shell" "~/.nix-profile/bin/bash"))
+  (add-to-list 'tramp-connection-properties
+             (list (regexp-quote "/ssh:suwonp@10.10.0.66:")
+                   "remote-shell" "~/.nix-profile/bin/bash")))
 
 
 #+end_src

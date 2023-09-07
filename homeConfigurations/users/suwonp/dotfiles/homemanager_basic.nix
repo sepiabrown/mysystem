@@ -97,6 +97,7 @@
           baobab # Disk Usage Analyser
           xautoclick
           sl
+          bash
         ];
     })
     {
@@ -323,10 +324,17 @@
         #   To keep the session alive, quit the window holding tmux without detaching.(ex) via mouse click)
         #tmux = {
         #  enable = true;
+        #  mouse = true;
+        #  historyLimit = 1000000;
         #  keyMode = "vi";
+        #  clock24 = true;
+        #  baseIndex = 1;
+        #  extraConfig = ''
+        #    bind-key '"' split-window -c '#{pane_current_path}' 
+        #    bind-key % split-window -h -c '#{pane_current_path}' 
+        #    bind-key c new-window -c '#{pane_current_path}' 
+        #  '';
         #  #newSession = true;
-        #  extraConfig = "set -g mouse on";
-        #  historyLimit = 100000;
         #};
 ######################
 # Not Tested on darwin
@@ -357,8 +365,18 @@
             hostname = "10.10.0.66";
             user = "suwonp";
             identityFile = "~/.ssh/id_ed25519";
+            extraOptions = {
+              RemoteCommand = ''if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ];then ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock;fi'';
+            };
           };
         };
+        extraConfig = ''
+          Host *
+            IgnoreUnknown UseKeychain
+            UseKeychain yes
+            #AddKeysToAgent yes
+            #IdentityFile ~/.ssh/id_ed25519
+        '';
       };
 
       home.file = {
@@ -454,11 +472,6 @@
             User sepiabrown
             Port 7777
             LocalForward 8192 localhost:8192
-          Host *
-            AddKeysToAgent yes
-            IgnoreUnknown UseKeychain
-            UseKeychain yes
-            IdentityFile ~/.ssh/id_ed25519
         '';
         "filter-file-upload".text = ''
           - ltximg/**
