@@ -1064,6 +1064,7 @@ https://www.gnu.org/software/emacs/manual/html_node/tramp/Remote-shell-setup.htm
 
 (after! tramp
   ;; (add-ssh-agent-to-tramp)
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   (add-to-list 'tramp-connection-properties
              (list (regexp-quote "/ssh:legion:")
                    "remote-shell" "~/.nix-profile/bin/bash"))

@@ -368,6 +368,30 @@ for the \"main\" or \"master\" branch."
 
 (use-package! string-inflection)
 
+;; (use-package! lsp-grammarly
+;;   :ensure t
+;;   :hook (text-mode . (lambda ()
+;;                        (require 'lsp-grammarly)
+;;                        (lsp))))  ; or lsp-deferred
+
+(defun add-ssh-agent-to-tramp ()
+  (cl-pushnew '("-A")
+              (cadr (assoc 'tramp-login-args
+                           ; if on Windows using Putty with Pageant,
+                           ; replace "ssh" with "plink"
+                           (assoc "ssh" tramp-methods)))
+              :test #'equal))
+
+(after! tramp
+  ;; (add-ssh-agent-to-tramp)
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (add-to-list 'tramp-connection-properties
+             (list (regexp-quote "/ssh:legion:")
+                   "remote-shell" "~/.nix-profile/bin/bash"))
+  (add-to-list 'tramp-connection-properties
+             (list (regexp-quote "/ssh:suwonp@10.10.0.66:")
+                   "remote-shell" "~/.nix-profile/bin/bash")))
+
 (mapc (lambda (x) (add-to-list '+lookup-provider-url-alist x))
       (list
         '("Hackage"            "http://hackage.haskell.org/package/%s")
