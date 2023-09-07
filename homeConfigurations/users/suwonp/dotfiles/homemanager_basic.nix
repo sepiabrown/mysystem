@@ -366,7 +366,8 @@
             user = "suwonp";
             identityFile = "~/.ssh/id_ed25519";
             extraOptions = {
-              RemoteCommand = ''if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ];then ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock;fi'';
+              RemoteCommand = ''if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ];then ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock;fi && /run/current-system/sw/bin/bash'';
+              RequestTTY = "yes";
             };
           };
         };
