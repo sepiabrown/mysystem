@@ -97,6 +97,7 @@
           baobab # Disk Usage Analyser
           xautoclick
           sl
+          bash
         ];
     })
     {
