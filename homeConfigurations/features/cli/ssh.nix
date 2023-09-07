@@ -24,10 +24,8 @@ in
   programs.ssh = {
 
     enable = true;
-
     controlMaster = "auto";
     controlPersist = "30d";
-
     matchBlocks = {
 
       "gateway" = {
@@ -39,18 +37,6 @@ in
       "urubamba" = {
         forwardX11 = true;
         hostname = "10.10.0.2";
-        user = "jj";
-      };
-
-      "cusco" = {
-        forwardX11 = true;
-        hostname = "10.10.0.3";
-        user = "jj";
-      };
-
-      "atacama" = {
-        forwardX11 = true;
-        hostname = "10.10.0.26";
         user = "jj";
       };
 
