@@ -64,6 +64,8 @@
   in
   {
 
+    pkgs = forAllSystems (system: pkgsFor system);
+
     overlays = import ./overlays;
 
     nixosModules = import ./modules/nixos;
