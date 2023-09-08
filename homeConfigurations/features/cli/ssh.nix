@@ -24,6 +24,10 @@ in
   programs.ssh = {
 
     enable = true;
+
+    controlMaster = "auto";
+    controlPersist = "30d";
+
     matchBlocks = {
 
       "gateway" = {
