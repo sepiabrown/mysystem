@@ -361,7 +361,7 @@
         enable = true;
         matchBlocks = {
           "legion" = {
-            forwardAgent = true;
+            # forwardAgent = true;
             hostname = "10.10.0.66";
             user = "suwonp";
             identityFile = "~/.ssh/id_ed25519";

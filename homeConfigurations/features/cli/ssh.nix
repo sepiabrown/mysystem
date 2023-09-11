@@ -24,8 +24,8 @@ in
   programs.ssh = {
 
     enable = true;
-    controlMaster = "auto";
-    controlPersist = "30d";
+    # controlMaster = "auto";
+    # controlPersist = "30d";
     matchBlocks = {
 
       "gateway" = {
@@ -93,6 +93,7 @@ in
       "hserver" = {
         forwardX11 = true;
         hostname = "20.20.100.2";
+        RemoteCommand = ''eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'';
       };
 
       "hproxy2220" = {
