@@ -94,7 +94,7 @@ in
         forwardX11 = true;
         hostname = "20.20.100.2";
         extraOptions = {
-          RemoteCommand = ''eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'';
+          RemoteCommand = ''eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519 && /run/current-system/sw/bin/bash'';
           RequestTTY = "yes";
         };
       };
