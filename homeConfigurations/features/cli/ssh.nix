@@ -93,7 +93,10 @@ in
       "hserver" = {
         forwardX11 = true;
         hostname = "20.20.100.2";
-        RemoteCommand = ''eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'';
+        extraOptions = {
+          RemoteCommand = ''eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'';
+          RequestTTY = "yes";
+        };
       };
 
       "hproxy2220" = {
