@@ -21,6 +21,7 @@ in
       permittedInsecurePackages = [ # TODO: remove this
         "qtwebkit-5.212.0-alpha4"
         "tightvnc-1.3.10"
+        "openssl-1.1.1v"
       ];
     };
   };

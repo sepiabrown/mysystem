@@ -43,10 +43,13 @@ in {
 
   xsession.enable = true;
   xsession.initExtra = ''
-    kmonad-hhkb-usb &
-    kmonad-hhkb-blt &
-    kmonad-x1 &
     myxset
   '';
+  # xsession.initExtra = ''
+  #   kmonad-hhkb-usb &
+  #   kmonad-hhkb-blt &
+  #   kmonad-x1 &
+  #   myxset
+  # '';
 
 }

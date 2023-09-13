@@ -4,11 +4,15 @@
 
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    haedosa.url = "github:haedosa/flakes";
+    nixpkgs.follows = "haedosa/nixpkgs-23-05";
+    home-manager.follows = "haedosa/home-manager-23-05";
+
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     impermanence.url = "github:nix-community/impermanence";

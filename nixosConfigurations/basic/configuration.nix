@@ -26,7 +26,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.settings.X11forwarding = true;
+  services.openssh.settings.X11Forwarding = true;
   services.openssh.settings.PermitRootLogin = "yes";
 
   hardware.enableAllFirmware = true;

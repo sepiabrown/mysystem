@@ -9,6 +9,9 @@ let
 in
 import nixpkgs {
   inherit system;
+  config = {
+    allowUnfree = true;
+  };
   overlays = [
     deploy-rs.overlay
     agenix.overlays.default

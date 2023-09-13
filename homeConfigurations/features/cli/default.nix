@@ -44,7 +44,7 @@ in
     cmatrix           # Shows a scrolling 'Matrix' like screen in Linux
     pass              # stores, retrieves, generates, and synchronizes passwords securely
     fd                # simple, fast and user-friendly alternative to find
-    exa               # a modern replacement for ls
+    # exa               # a modern replacement for ls
     ripgrep           # a modern replacement for grep
     httpie            # a modern replacement for curl
     tokei             # LOC analyser
