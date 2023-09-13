@@ -11,6 +11,10 @@
     };
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+
+    haedosa.url = "github:haedosa/flakes";
+    nixpkgs-23-05.follows = "haedosa/nixpkgs-23-05";
+
     impermanence.url = "github:nix-community/impermanence";
 
     nur.url = "github:nix-community/NUR";
