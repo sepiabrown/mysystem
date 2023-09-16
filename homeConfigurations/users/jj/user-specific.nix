@@ -10,6 +10,6 @@
 
   home.username = "jj";
   home.homeDirectory = "/home/${config.home.username}";
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 
 }

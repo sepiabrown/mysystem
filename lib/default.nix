@@ -1,7 +1,11 @@
 pkgs:
 let
 
-  inherit (pkgs.lib) makeExtensible;
+  inherit (pkgs.lib)
+    makeExtensible
+    splitString
+    elemAt
+  ;
 
   mylib = makeExtensible (self: let
     callLibs = file: import file pkgs self;
@@ -19,6 +23,14 @@ let
       };
 
     snippets = callLibs ./snippets.nix;
+
+
+    get-user-hostname = str: let
+      list = splitString "@" str;
+    in {
+      user = elemAt list 0;
+      hostname = elemAt list 1;
+    };
 
   });
 

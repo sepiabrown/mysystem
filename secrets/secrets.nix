@@ -9,8 +9,9 @@ let
   antofagasta = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPYe7j/BoueCTsYF4BrNojPC+Y0MMCDqia4QkS7KmVNG";
   giron = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP7qlu4YKYbtjN4oLFC9VQZYFWEGnpkHYt7MsF1+dHt6";
   atacama = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHDPbMcRRRY54ObB8+v2Ir1Y8bol7Di11AS880CLwK0";
+  cusco = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+QRCsGXNpg1KjqkuT0QADMTeCf+fvJ66zI8K7dmf0";
 
-  systems = [ lima urubamba bogota lapaz antofagasta giron atacama ];
+  systems = [ lima urubamba bogota lapaz antofagasta giron atacama cusco ];
 
 in
 {
@@ -23,6 +24,9 @@ in
 
   # pubkey = /P8HtebCmkXt+17xEeCsMpzsukG2ZpCm8Lh6jjsgRzo=
   "wg-bogota.age".publicKeys = [ jj bogota ];
+
+  # pubkey = PNT6V6P0UzBxOjFIjDRlAbvzAeBzCVo3nvgwlIUYm1w=
+  "wg-cusco.age".publicKeys = [ jj cusco ];
 
   # pubkey = 35WCxg6asdsW7+v67RO9eG+/mVG4pbYz0bJtvxyR5Cc=
   "wg-lapaz.age".publicKeys = [ jj lapaz ];

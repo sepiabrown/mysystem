@@ -61,7 +61,7 @@
     pkgsFor = system: import ./pkgs.nix { inherit inputs system; };
 
   in
-  {
+  rec {
 
     pkgs = forAllSystems (system: pkgsFor system);
 
@@ -72,6 +72,9 @@
     homeManagerModules = import ./modules/home-manager;
 
     packages = forAllSystems (import ./packages inputs);
+
+    apps = forAllSystems (system: (import ./apps {
+      pkgs = pkgsFor system; inherit nixosConfigurations homeConfigurations; }));
 
     devShells = forAllSystems (system: {
       default = import ./shell.nix { pkgs = pkgsFor system; };

@@ -9,6 +9,10 @@ let
   inherit (builtins) mapAttrs;
   inherit (mylib) get-toplevel get-isoimage;
 
+
+  homeSystems =
+    (mapAttrs (_ : v: v.activationPackage) homeConfigurations);
+
   nixosSystems =
     (mapAttrs (_ : get-toplevel) nixosConfigurations) // {
       iguazu = get-isoimage nixosConfigurations.iguazu;
@@ -30,10 +34,11 @@ let
   doom-private = callPackage ./doom-private {};
   doom-emacs = homeConfigurations."jj@lapaz".config.programs.doom-emacs.package;
 
-in nixosSystems
-// myfonts
+in myfonts
 // myscripts
 //
 {
+  nixos = nixosSystems;
+  home = homeSystems;
   inherit tmux tex doom-private doom-emacs;
 }

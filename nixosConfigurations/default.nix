@@ -14,6 +14,7 @@ let
        "lima"
        "lapaz"
        "bogota"
+       "cusco"
        "antofagasta"
        "giron"
        "iguazu"

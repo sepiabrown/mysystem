@@ -42,6 +42,12 @@ in
         user = "jj";
       };
 
+      "cusco" = {
+        forwardX11 = true;
+        hostname = "10.10.0.3";
+        user = "jj";
+      };
+
       "lima" = {
         forwardX11 = true;
         hostname = "10.10.0.21";

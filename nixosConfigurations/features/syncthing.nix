@@ -18,6 +18,7 @@
       urubamba = { id = "W33RJBP-6JXMOPP-USEFKYU-U2EJWN4-YTLGXBF-ICQUEIV-RQZURFW-RKZZFAY"; };
       antofagasta = { id = "25SGCDR-2WOKWNJ-JU7VJ3C-BYWO77P-ASVQTUV-2LI7NTY-JTSWFKK-DUJEBA4"; };
       atacama = { id = "XA5PJXG-RLXFCIC-BJF7FK5-FQTDVVP-YS6K2DX-27I4JYQ-55LRSUF-4YSR5QI"; };
+      cusco = { id = "IM6A4WE-O47VYMM-DIOCSGA-EA3LZPR-CQOVZ5M-L52WJAU-6O52MB4-IGXSHQV"; };
     };
     folders = {
 
@@ -30,6 +31,7 @@
           # "urubamba"
           "antofagasta"
           "atacama"
+          "cusco"
         ];
         versioning = {
           type = "staggered";

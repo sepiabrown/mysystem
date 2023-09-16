@@ -27,6 +27,7 @@ let
        "jj@lima"
        "jj@lapaz"
        "jj@bogota"
+       "jj@cusco"
        "jj@antofagasta"
        "jj@atacama"
        "jj@server"

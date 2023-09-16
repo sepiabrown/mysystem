@@ -61,6 +61,15 @@ in
       };
     };
 
+    cusco = {
+      hostname = "10.10.0.3";
+      profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.cusco;
+      profiles."jj" = {
+        user = "jj";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@cusco";
+      };
+    };
+
     lapaz = {
       hostname = "10.10.0.23";
       profiles.system.path = activate-nixos "x86_64-linux" nixosConfigurations.lapaz;
