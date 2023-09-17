@@ -20,17 +20,7 @@ let
     in { type = "app"; program = "${script}/bin/${name}.sh"; };
 
 
-  hosts = {
-    lima = "10.10.0.21";
-    urubamba = "10.10.0.2";
-    cusco = "10.10.0.2";
-    lapaz = "10.10.0.23";
-    bogota = "10.10.0.22";
-    antofagasta = "10.10.0.24";
-    giron = "10.10.0.25";
-    atacama = "10.10.0.26";
-    havana = "192.168.50.110";
-  };
+  hosts = import ../nixosConfigurations/host-ips.nix;
 
 in
 {

@@ -9,22 +9,27 @@ let
   activate-home = system: deploy-rs.lib.${system}.activate.home-manager;
   activate-custom = system: deploy-rs.lib.${system}.activate.custom;
 
-  server-nodes = lib.mapAttrs (name: value: {
-    hostname = value;
-    profiles."jj" = {
-      user = "jj";
-      path = activate-home "x86_64-linux" homeConfigurations."jj@server";
+  host-ips = import ../nixosConfigurations/host-ips.nix;
+
+  server-nodes = __listToAttrs (map (name: {
+    inherit name;
+    value = {
+      hostname = host-ips."${name}";
+      profiles."jj" = {
+        user = "jj";
+        path = activate-home "x86_64-linux" homeConfigurations."jj@server";
+      };
     };
-  }) {
-    gateway = "10.10.0.1";
-    hproxy = "20.20.100.1";
-    hserver = "20.20.100.2";
-    uyuni = "20.20.1.1";
-    b3 = "10.10.100.3";
-    b4 = "10.10.100.4";
-    b5 = "10.10.100.5";
-    b6 = "10.10.100.6";
-  };
+  }) [
+    "gateway"
+    "hproxy"
+    "hserver"
+    "uyuni"
+    "b3"
+    "b4"
+    "b5"
+    "b6"
+  ]);
 
 in
 {
