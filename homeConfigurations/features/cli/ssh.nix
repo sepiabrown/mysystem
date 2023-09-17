@@ -48,6 +48,12 @@ in
         user = "jj";
       };
 
+      "atacama" = {
+        forwardX11 = true;
+        hostname = "10.10.0.26";
+        user = "jj";
+      };
+
       "lima" = {
         forwardX11 = true;
         hostname = "10.10.0.21";
