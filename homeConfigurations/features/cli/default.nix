@@ -66,6 +66,7 @@ in
     dig
     dasel
     xpra
+    lshw
   ] ++
   (with mypackages; [
     tmux
