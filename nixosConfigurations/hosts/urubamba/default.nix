@@ -28,7 +28,7 @@ in
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-    ../../features/intel-12gen-igpu.nix
+    # ../../features/intel-12gen-igpu.nix
 
     # bootloader
     ./bootloader.nix
@@ -64,6 +64,15 @@ in
     settings = {
       trusted-users = [ "suwonp" ];
     };
+  };
+
+
+  users.extraUsers.suwonp = {
+    isNormalUser = true;
+    home = "/home/suwonp";
+    extraGroups = [ "wheel" "networkmanager" "input" "uinput" "data" ];
+    hashedPassword = "$6$NVPZ8mxP39xJFpqi$fvFq/WTIJG62.AlcZftP29.xjTK1r6FP5re89OtyIX8nAk8PwfiEQTzdiWkITAP83fPH8p8csF3G7EnOJMWPN1";
+    openssh.authorizedKeys.keys = [];
   };
 
 }
