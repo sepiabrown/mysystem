@@ -101,9 +101,6 @@
         ];
     })
     {
-      nixpkgs.config.permittedInsecurePackages = [
-        "openssl-1.1.1u"
-      ];
 
       home.packages = with pkgs;
         [
