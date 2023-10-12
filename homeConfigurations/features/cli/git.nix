@@ -15,6 +15,7 @@ let
     init.defaultBranch = "master";
     lfs.enable = true;
     feature.manyFiles = true;
+    rerere.enable = true;
     # url."https://github.com/".insteadOf = "git://github.com/";
   };
 in

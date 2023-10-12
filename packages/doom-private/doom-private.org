@@ -650,8 +650,7 @@ for the \"main\" or \"master\" branch."
 (add-hook 'magit-mode-hook #'modi/add-PR-fetch-ref)
 
 #+end_src
-#+RESULTS:
-| +modeline-hide-in-non-status-buffer-h | modi/add-PR-fetch-ref | turn-on-magit-gitflow | doom--setq-evil-ex-hl-update-delay-for-magit-mode-h |
+
 ** Org Mode
 *** Org Todo Keywords
 
@@ -1412,6 +1411,16 @@ https://gist.github.com/ram535/a2153fb86f33ecec587d593c1c5e1623
   (map! :map minibuffer-mode-map
         "M-j"  #'next-history-element
         "M-k"  #'previous-history-element)
+
+#+end_src
+
+*** Ivy
+
+#+begin_src emacs-lisp
+
+(map! :after ivy
+      :map ivy-minibuffer-map
+      :desc "C-<backspaceee>" "C-<backspace>" #'counsel-up-directory)
 
 #+end_src
 

@@ -564,4 +564,8 @@ for the \"main\" or \"master\" branch."
         "M-j"  #'next-history-element
         "M-k"  #'previous-history-element)
 
+(map! :after ivy
+      :map ivy-minibuffer-map
+      :desc "C-<backspaceee>" "C-<backspace>" #'counsel-up-directory)
+
   (map! :leader "r" #'consult-ripgrep)
